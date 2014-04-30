@@ -78,7 +78,7 @@ $$('.popup-settings .save-settings').on('click', function () {
         && JSON.parse(localStorage.ttrAppSettings).numTrains != null){
         temp = JSON.parse(localStorage.ttrAppSettings).numTrains;
     } else {
-        temp = 0;
+        temp = -1;
     }
 
     if (temp !== numTrains) {
@@ -346,6 +346,7 @@ function changeDaMothaTruckinTrainCountFoRealz(el, numTrainsRemoved){
 
 $$('.clear-scores').on('click', function(){
     myApp.confirm('Are you sure you want to clear the scores?', function(){
+        resetRemainingTrains();
         clearAllScores();
         myApp.closeModal('.popup-settings');
     }, null, 'Whoa there, partner!');
