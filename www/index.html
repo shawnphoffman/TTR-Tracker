@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html manifest="manifest.php" class="with-statusbar-overlay">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>TTR Tracker</title>
+
+    <link rel="stylesheet" href="css/framework7.min.css">
+    <link rel="stylesheet" href="css/todo7.css">
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <!-- Favicon-->
+    <link href="img/icon-57.png" rel="shortcut icon"> 
+    <!-- iOS 7 iPad (retina) -->
+    <link href="img/icon-152.png" sizes="152x152" rel="apple-touch-icon">
+    <!-- iOS 6 iPad (retina) -->
+    <link href="img/icon-144.png" sizes="144x144" rel="apple-touch-icon">
+    <!-- iOS 7 iPhone (retina) -->
+    <link href="img/icon-120.png" sizes="120x120" rel="apple-touch-icon">
+    <!-- iOS 6 iPhone (retina) -->
+    <link href="img/icon-114.png" sizes="114x114" rel="apple-touch-icon">
+    <!-- iOS 7 iPad -->
+    <link href="img/icon-76.png" sizes="76x76" rel="apple-touch-icon">
+    <!-- iOS 6 iPad -->
+    <link href="img/icon-72.png" sizes="72x72" rel="apple-touch-icon">
+    <!-- iOS 6 iPhone -->
+    <link href="img/icon-57.png" sizes="57x57" rel="apple-touch-icon">
+  </head>
+  <body>
+    <!-- Statusbar overlay-->
+    <div class="statusbar-overlay"></div>
+    <!-- Views-->
+    <div class="views">
+      <div class="view view-main navbar-fixed">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="left"><a href="#" data-popup=".popup-settings" class="link icon-only open-popup"><span class="icon icon-cog2"></span></a></div>
+            <div class="center sliding">TTR Tracker</div>
+            <div class="right"><a href="#" data-popup=".popup-player" class="link icon-only open-popup"><span class="icon icon-plus"></span></a></div>
+          </div>
+        </div>
+        <div class="pages">
+          <div data-page="index" class="page">
+            <div class="page-content">
+              <div class="list-block todo-items-list">
+                <ul></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Popup to add new task           -->
+    <div class="popup popup-player">
+      <div class="view view-popup navbar-fixed">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="left"></div>
+            <div class="center sliding">New Player</div>
+            <div class="right"><a href="#" class="link close-popup">Cancel</a></div>
+          </div>
+        </div>
+        <div class="pages">
+          <div class="page">
+            <div class="page-content">
+              <div class="list-block">
+                <ul>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title label">Player</div>
+                        <div class="item-input">
+                          <input type="text" name="title" class="player-name" autocapitalize="words"     placeholder="Player Name">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner color-selection">
+                        <div class="item-title label">Color</div>
+                        <div class="item-input">
+                            <span data-color="black" class="color selected"></span>
+                            <span data-color="purple" class="color"></span>
+                            <span data-color="blue" class="color"></span>
+                            <span data-color="green" class="color"></span>
+                            <span data-color="yellow" class="color"></span>
+                            <span data-color="orange" class="color"></span>
+                            <span data-color="red" class="color"></span>
+                            <span data-color="white" class="color"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="content-block"><a class="button button-big add-task active">Add Player</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup-settings">
+        <div class="view view-popup navbar-fixed">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="left"></div>
+                    <div class="center sliding">Settings</div>
+                    <div class="right"><a href="#" class="link close-popup">Cancel</a></div>
+                </div>
+            </div>
+            <div class="pages">
+                <div class="page">
+                    <div class="page-content">
+                        <div class="list-block">
+                            <ul>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Count Trains</div>
+                                            <div class="item-input">
+                                                <label class="label-switch">
+                                                    <input type="checkbox" id="isCountTrains" name="isCountTrains">
+                                                    <div class="checkbox"></div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Number of Trains</div>
+                                            <div class="item-input">
+                                                <input type="text" pattern="[0-9]*" id="num-trains" name="num-trains" placeholder="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="content-block"><a class="button button-big save-settings active">Save</a></div>
+                        <div class="content-block"><a class="button button-big button-cancel clear-scores active">Clear Scores</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Template-->
+    <script id="todo-item-template" type="template">
+      <li data-color="{{color}}" data-id="{{id}}" class="swipeout">
+        <label class="label-checkbox item-content item-link swipeout-content player-data" data-id="{{id}}" data-score="{{score}}">
+          <div class="item-inner" >
+            <div class="item-title">{{title}} <span class="train-count">{{trains}} trains</span></div>
+              <div class="item-after item-score">{{score}}</div>
+          </div>
+        </label>
+        <div class="swipeout-actions">
+          <div class="swipeout-actions-inner"><a href="#" class="swipeout-delete">Delete</a></div>
+        </div>
+      </li>
+    </script>
+    <script type='application/javascript' src='js/fastclick.min.js'></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/todo7.js"></script>
+  </body>
+</html>

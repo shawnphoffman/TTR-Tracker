@@ -1,0 +1,48 @@
+@font-face {
+	font-family: 'ttr';
+	src:url('ttr.eot?4fnatj');
+	src:url('ttr.eot?#iefix4fnatj') format('embedded-opentype'),
+		url('ttr.woff?4fnatj') format('woff'),
+		url('ttr.ttf?4fnatj') format('truetype'),
+		url('ttr.svg?4fnatj#ttr') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'ttr';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+    font-size: 1.2em;
+    color: white;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-settings:before {
+	content: "\e1db";
+}
+.icon-cog:before {
+	content: "\e1df";
+}
+.icon-cog2:before {
+	content: "\e1e1";
+}
+.icon-cog3:before {
+	content: "\e1e2";
+}
+.icon-cog4:before {
+	content: "\e1e5";
+}
+.icon-plus:before {
+	content: "\e376";
+}
+.icon-github:before {
+	content: "\e4ba";
+}
