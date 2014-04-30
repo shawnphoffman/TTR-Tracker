@@ -52,7 +52,7 @@ $$('.popup .add-task').on('click', function () {
         ,trains: appSettings.numTrains
     });
     localStorage.td7Data = JSON.stringify(todoData);
-    buildTodoListHtml();
+    buildPlayerListHtml();
 
     myApp.closeModal('.popup');
 });
@@ -89,9 +89,9 @@ $$('.popup-settings .save-settings').on('click', function () {
     myApp.closeModal('.popup-settings');
 });
 
-// Build Todo HTML
+// Build Player HTML
 var todoItemTemplate = $$('#todo-item-template').html();
-function buildTodoListHtml() {
+function buildPlayerListHtml() {
     var html = '';
     for (var i = 0; i < todoData.length; i++) {
         var todoItem = todoData[i];
@@ -99,8 +99,8 @@ function buildTodoListHtml() {
                     .replace(/{{title}}/g, todoItem.title)
                     .replace(/{{color}}/g, todoItem.color)
                     .replace(/{{checked}}/g, todoItem.checked)
-                    .replace(/{{score}}/g, todoItem.score)
-                    .replace(/{{trains}}/g, todoItem.trains)
+                    .replace(/{{score}}/g, todoItem.score || 0)
+                    .replace(/{{trains}}/g, todoItem.trains || 0)
                     .replace(/{{id}}/g, todoItem.id);
     }
     $$('.todo-items-list ul').html(html);
@@ -112,7 +112,7 @@ function buildTodoListHtml() {
     bindPlayerClick();
 }
 // Build HTML on App load
-buildTodoListHtml();
+buildPlayerListHtml();
 
 // Build Settings Popup
 function buildSettingsPopup(){
@@ -247,7 +247,7 @@ function changePoints(dis, score){
                                                 }},
                                                 {text:'Subtract Points', red:true, onClick:function(){
                                                     myApp.prompt("How many points would you like to subtract?", function(num){
-                                                        myApp.confirm("Are you sure you want to subtract points? This will disable train counting.", function(num){
+                                                        myApp.confirm("Are you sure you want to subtract points? This will disable train counting.", function(){
                                                             score -= parseInt(num, 10);
                                                             if (score < 0) score = 0;
                                                             changeDaScoreYo(dis, score);
@@ -285,7 +285,7 @@ function changePoints(dis, score){
                                 }},
                                 {text:'Subtract Points', red:true, onClick:function(){
                                     myApp.prompt("How many points would you like to subtract?", function(num){
-                                        myApp.confirm("Are you sure you want to subtract points? This will disable train counting.", function(num){
+                                        myApp.confirm("Are you sure you want to subtract points? This will disable train counting.", function(){
                                             score -= parseInt(num, 10);
                                             if (score < 0) score = 0;
                                             changeDaScoreYo(dis, score);
@@ -356,7 +356,7 @@ function clearAllScores(){
         todoData[i].score = 0;
     }
     localStorage.td7Data = JSON.stringify(todoData);
-    buildTodoListHtml();
+    buildPlayerListHtml();
 }
 
 function resetRemainingTrains(){
