@@ -167,37 +167,37 @@ function changePoints(dis, score){
                 {text:'Select the number of trains played.', label:true},
                 {text:'1 Train (+1)', onClick:function(){
                     score += 1;
-                    if (changeDaMothaTruckinTrainCountFoRealz(dis, 1)){
+                    if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 1)){
                         changeDaScoreYo(dis, score);
                     }
                 }},
                 {text:'2 Trains (+2)', onClick:function(){
                     score += 2;
-                    if (changeDaMothaTruckinTrainCountFoRealz(dis, 2)){
+                    if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 2)){
                         changeDaScoreYo(dis, score);
                     }
                 }},
                 {text:'3 Trains (+4)', onClick:function(){
                     score += 4;
-                    if (changeDaMothaTruckinTrainCountFoRealz(dis, 3)){
+                    if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 3)){
                         changeDaScoreYo(dis, score);
                     }
                 }},
                 {text:'4 Trains (+7)', onClick:function(){
                     score += 7;
-                    if (changeDaMothaTruckinTrainCountFoRealz(dis, 4)){
+                    if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 4)){
                         changeDaScoreYo(dis, score);
                     }
                 }},
                 {text:'5 Trains (+10)', onClick:function(){
                     score += 10;
-                    if (changeDaMothaTruckinTrainCountFoRealz(dis, 5)){
+                    if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 5)){
                         changeDaScoreYo(dis, score);
                     }
                 }},
                 {text:'6 Trains (+15)', onClick:function(){
                     score += 15;
-                    if (changeDaMothaTruckinTrainCountFoRealz(dis, 6)){
+                    if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 6)){
                         changeDaScoreYo(dis, score);
                     }
                 }},
@@ -208,19 +208,19 @@ function changePoints(dis, score){
                                 {text:'Select the number of trains played.', label:true},
                                 {text:'7 Trains (+18)', onClick:function(){
                                     score += 18;
-                                    if (changeDaMothaTruckinTrainCountFoRealz(dis, 7)){
+                                    if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 7)){
                                         changeDaScoreYo(dis, score);
                                     }
                                 }},
                                 {text:'8 Trains (+21)', onClick:function(){
                                     score += 21;
-                                    if (changeDaMothaTruckinTrainCountFoRealz(dis, 8)){
+                                    if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 8)){
                                         changeDaScoreYo(dis, score);
                                     }
                                 }},
                                 {text:'9 Trains (+27)', onClick:function(){
                                     score += 27;
-                                    if (changeDaMothaTruckinTrainCountFoRealz(dis, 9)){
+                                    if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 9)){
                                         changeDaScoreYo(dis, score);
                                     }
                                 }},
@@ -314,7 +314,6 @@ function changeDaScoreYo(el, newVal){
 
 function changeDaMothaTruckinTrainCountFoRealz(el, numTrainsRemoved){
     var newText;
-
     var id = $$(el).parents('li').attr('data-id') * 1;
     for (var i = 0; i < todoData.length; i++) {
         if (todoData[i].id === id) {
@@ -326,6 +325,7 @@ function changeDaMothaTruckinTrainCountFoRealz(el, numTrainsRemoved){
             if (newCount < 0) newCount = 0;
             newText = newCount + ' trains';
             if (newCount == 1) newText = newText.substr(0, newText.length);
+            newText += ' left';
 
             todoData[i].trains = newCount;
             localStorage.td7Data = JSON.stringify(todoData);
@@ -374,7 +374,3 @@ function disableTrainCounting(){
     localStorage.ttrAppSettings = JSON.stringify(appSettings);
     buildSettingsPopup();
 }
-
-//$$('.addl-trains').on('click', function() {
-//
-//});
