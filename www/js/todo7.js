@@ -72,7 +72,16 @@ $$('.popup-settings .save-settings').on('click', function () {
         isCountTrains: isCountTrains,
         numTrains: numTrains
     };
-    if (localStorage.ttrAppSettings.numTrains !== numTrains) {
+
+    var temp;
+    if (localStorage != null && localStorage.ttrAppSettings != null && JSON.parse(localStorage.ttrAppSettings) != null
+        && JSON.parse(localStorage.ttrAppSettings).numTrains != null){
+        temp = JSON.parse(localStorage.ttrAppSettings).numTrains;
+    } else {
+        temp = 0;
+    }
+
+    if (temp !== numTrains) {
         resetRemainingTrains();
         clearAllScores();
     }
