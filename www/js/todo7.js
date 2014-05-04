@@ -63,7 +63,11 @@ $$('.popup-settings .save-settings').on('click', function () {
     if (!isCountTrains){
         $$('.train-count').hide();
     } else {
-        $$('.train-count').showinline();
+        myApp.confirm("If you make this change mid-game, you will lose existing scores. Are you sure you want to continue?", function(){
+            resetRemainingTrains();
+            clearAllScores();
+            $$('.train-count').showinline();
+        }, null, "Whoa there, partner!");
     }
 
     var numTrains = $$('.popup-settings #num-trains').val();
