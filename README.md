@@ -10,7 +10,7 @@ TTR Tracker
 - Able to add/subtract custom values for dynamic scoring. 
 - Able to clear scores for a new game and also swipe-to-delete players.
 
-<!--Available on the <a href="https://itunes.apple.com/us/app/ttr-tracker/id873105256?ls=1&mt=8" target="_blank">iOS App Store</a>.-->
+Available on the <a href="https://itunes.apple.com/us/app/ttr-tracker/id873105256?ls=1&mt=8" target="_blank">iOS App Store</a>.
 
 ## Details
 
