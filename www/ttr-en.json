@@ -1,0 +1,41 @@
+{
+    "title": "TTR Tracker",
+	"settings": {
+		"title" : "Settings",
+		"number_trains" : "Number of Trains",
+		"count_trains" : "Count Trains",
+		"cancel" : "Cancel",
+		"save" : "Save",
+		"clear" : "Clear Scores",
+		"ok" : "OK"
+	},
+	"player" : {
+		"name_placeholder" : "Player Name",
+		"color" : "Color",
+		"player" : "Player",
+		"add_player" : "Add Player",
+		"new_player" : "New Player"
+	},
+	"dialog" : {
+		"played_trains" : "Select the number of trains played.",
+		"whoa" : "Whoa there, partner!",
+		"you_sure_clear" : "Are you sure you want to clear the scores?",
+		"how_many_add" : "How many points would you like to add?",
+		"midgame_change" : "If you make this change mid-game, you will lose existing scores. Are you sure you want to continue?",
+		"how_many_sub" : "How many points would you like to subtract?",
+		"you_sure_sub" : "Are you sure you want to subtract points? This will disable train counting.",
+        "points_adjust" : "Select the points adjustment to be applied. Keep in mind, point adjustments do not affect remaining train counts.",
+        "neg_trains" : "You cannot have negative trains. Please select another option."
+	},
+	"info" : {
+		"custom" : "Custom",
+		"trains" : "Trains",
+		"train" : "Train",
+		"trains_left" : "trains left",
+		"train_left" : "train left",
+		"add_points" : "Add Points",
+		"sub_points" : "Subtract Points",
+		"go_back" : "Go Back",
+		"delete" : "Delete"
+	}
+}

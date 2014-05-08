@@ -3,12 +3,41 @@ var myApp = new Framework7({
     modalTitle: 'TTR Tracker'
 });
 
+var jsStrings;
+
+document.addEventListener("resume", onResume, false);
+function onResume() {
+    loadJsStrings();
+    $('.player-name').attr("placeholder", jsStrings.player.name_placeholder);
+}
+
+function loadJsStrings(){
+    jsStrings = (function () {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': 'ttr-' + getLanguage() + '.json',
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+}
+
+$(function(){
+    loadJsStrings();
+    $("[data-localize]").localize("ttr", { language : getLanguage()} );
+    $('.player-name').attr("placeholder", jsStrings.player.name_placeholder);
+});
+
 // Export selectors engine
 var $$ = Framework7.$;
 
 // Add views
 var mainView = myApp.addView('.view-main', {
-    // Because we use fixed-through navbar we can enable dynamic navbar
     dynamicNavbar: true
 });
 
@@ -63,11 +92,11 @@ $$('.popup-settings .save-settings').on('click', function () {
     if (!isCountTrains){
         $$('.train-count').hide();
     } else {
-        myApp.confirm("If you make this change mid-game, you will lose existing scores. Are you sure you want to continue?", function(){
+        myApp.confirm(jsStrings.dialog.midgame_change, function(){
             resetRemainingTrains();
             clearAllScores();
             $$('.train-count').showinline();
-        }, null, "Whoa there, partner!");
+        }, null, jsStrings.dialog.whoa);
     }
 
     var numTrains = $$('.popup-settings #num-trains').val();
@@ -78,8 +107,11 @@ $$('.popup-settings .save-settings').on('click', function () {
     };
 
     var temp;
-    if (localStorage != null && localStorage.ttrAppSettings != null && JSON.parse(localStorage.ttrAppSettings) != null
-        && JSON.parse(localStorage.ttrAppSettings).numTrains != null){
+    if (localStorage != null
+        && localStorage.ttrAppSettings != null
+        && JSON.parse(localStorage.ttrAppSettings) != null
+        && JSON.parse(localStorage.ttrAppSettings).numTrains != null)
+    {
         temp = JSON.parse(localStorage.ttrAppSettings).numTrains;
     } else {
         temp = -1;
@@ -131,17 +163,6 @@ function buildSettingsPopup(){
 }
 buildSettingsPopup();
 
-// Mark checked
-$$('.todo-items-list').on('change', 'input', function () {
-    var input = $$(this);
-    var checked = input[0].checked;
-    var id = input.parents('li').attr('data-id') * 1;
-    for (var i = 0; i < todoData.length; i++) {
-        if (todoData[i].id === id) todoData[i].checked = checked ? 'checked' : '';
-    }
-    localStorage.td7Data = JSON.stringify(todoData);
-});
-
 // Delete item
 $$('.todo-items-list').on('delete', '.swipeout', function () {
     var id = $$(this).attr('data-id') * 1;
@@ -163,7 +184,7 @@ window.addEventListener('load', function (e) {
     window.applicationCache.addEventListener('updateready', function (e) {
         if (window.applicationCache.status === window.applicationCache.UPDATEREADY) {
             // Browser downloaded a new app cache.
-            myApp.confirm('A new version of ToDo7 is available. Do you want to load it right now?', function () {
+            myApp.confirm('A new version of TTR Tracker is available. Do you want to load it right now?', function () {
                 window.location.reload();
             });
         } else {
@@ -172,86 +193,86 @@ window.addEventListener('load', function (e) {
     }, false);
 }, false);
 
-
 function changePoints(dis, score){
     myApp.actions(
         [
             [
-                {text:'Select the number of trains played.', label:true},
-                {text:'1 Train (+1)', onClick:function(){
+                {text:jsStrings.dialog.played_trains, label:true},
+                {text:'1 '+ jsStrings.info.train +' (+1)', onClick:function(){
                     score += 1;
                     if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 1)){
                         changeDaScoreYo(dis, score);
                     }
                 }},
-                {text:'2 Trains (+2)', onClick:function(){
+                {text:'2 '+ jsStrings.info.trains +' (+2)', onClick:function(){
                     score += 2;
                     if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 2)){
                         changeDaScoreYo(dis, score);
                     }
                 }},
-                {text:'3 Trains (+4)', onClick:function(){
+                {text:'3 '+ jsStrings.info.trains +' (+4)', onClick:function(){
                     score += 4;
                     if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 3)){
                         changeDaScoreYo(dis, score);
                     }
                 }},
-                {text:'4 Trains (+7)', onClick:function(){
+                {text:'4 '+ jsStrings.info.trains +' (+7)', onClick:function(){
                     score += 7;
                     if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 4)){
                         changeDaScoreYo(dis, score);
                     }
                 }},
-                {text:'5 Trains (+10)', onClick:function(){
+                {text:'5 '+ jsStrings.info.trains +' (+10)', onClick:function(){
                     score += 10;
                     if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 5)){
                         changeDaScoreYo(dis, score);
                     }
                 }},
-                {text:'6 Trains (+15)', onClick:function(){
+                {text:'6 '+ jsStrings.info.trains +' (+15)', onClick:function(){
                     score += 15;
                     if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 6)){
                         changeDaScoreYo(dis, score);
                     }
                 }},
-                {text:'&gt; 6 Trains', onClick:function(){
+                {text:'&gt; 6 '+ jsStrings.info.trains, onClick:function(){
                     myApp.actions(
                         [
                             [
-                                {text:'Select the number of trains played.', label:true},
-                                {text:'7 Trains (+18)', onClick:function(){
+                                {text:jsStrings.dialog.played_trains, label:true},
+                                {text:'7 '+ jsStrings.info.trains +' (+18)', onClick:function(){
                                     score += 18;
                                     if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 7)){
                                         changeDaScoreYo(dis, score);
                                     }
                                 }},
-                                {text:'8 Trains (+21)', onClick:function(){
+                                {text:'8 '+ jsStrings.info.trains +' (+21)', onClick:function(){
                                     score += 21;
                                     if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 8)){
                                         changeDaScoreYo(dis, score);
                                     }
                                 }},
-                                {text:'9 Trains (+27)', onClick:function(){
+                                {text:'9 '+ jsStrings.info.trains +' (+27)', onClick:function(){
                                     score += 27;
                                     if (!appSettings.isCountTrains || changeDaMothaTruckinTrainCountFoRealz(dis, 9)){
                                         changeDaScoreYo(dis, score);
                                     }
                                 }},
-                                {text:'Custom', red:true, onClick:function(){
+                                {text:jsStrings.info.custom, red:true, onClick:function(){
                                     myApp.actions(
                                         [
                                             [
-                                                {text:'Select the points adjustment to be applied. Keep in mind, points ' +
-                                                    'adjustments do not affect remaining train counts.', label:true},
-                                                {text:'Add Points', onClick:function(){
-                                                    myApp.prompt("How many points would you like to add?", function(num){
+                                                {text:jsStrings.dialog.points_adjust, label:true},
+                                                {text:jsStrings.info.add_points, onClick:function(){
+                                                    myApp.prompt(jsStrings.dialog.how_many_add, function(num){
+                                                        num = num || 0;
                                                         score += parseInt(num, 10);
                                                         changeDaScoreYo(dis, score);
                                                     }, null, 'number')
                                                 }},
-                                                {text:'Subtract Points', red:true, onClick:function(){
-                                                    myApp.prompt("How many points would you like to subtract?", function(num){
-                                                        myApp.confirm("Are you sure you want to subtract points? This will disable train counting.", function(){
+                                                {text:jsStrings.info.sub_points, red:true, onClick:function(){
+                                                    myApp.prompt(jsStrings.dialog.how_many_sub, function(num){
+                                                        myApp.confirm(jsStrings.dialog.you_sure_sub, function(){
+                                                            num = num || 0;
                                                             score -= parseInt(num, 10);
                                                             if (score < 0) score = 0;
                                                             changeDaScoreYo(dis, score);
@@ -261,7 +282,7 @@ function changePoints(dis, score){
                                                 }}
                                             ],
                                             [
-                                                { text:'Go Back', bold:true, onClick: function(){
+                                                { text:jsStrings.info.go_back, bold:true, onClick: function(){
                                                     $$(dis).click();
                                                 }}
                                             ]
@@ -269,27 +290,28 @@ function changePoints(dis, score){
                                 }}
                             ],
                             [
-                                { text:'Go Back', bold:true, onClick: function(){
+                                { text:jsStrings.info.go_back, bold:true, onClick: function(){
                                     $$(dis).click();
                                 }}
                             ]
                         ]);
                 }},
-                {text:'Custom (+/-)', red:true, onClick:function(){
+                {text: jsStrings.info.custom + ' (+/-)', red:true, onClick:function(){
                     myApp.actions(
                         [
                             [
-                                {text:'Select the points adjustment to be applied. Keep in mind, point ' +
-                                    'adjustments do not affect remaining train counts.', label:true},
-                                {text:'Add Points', onClick:function(){
-                                    myApp.prompt("How many points would you like to add?", function(num){
+                                {text:jsStrings.dialog.points_adjust, label:true},
+                                {text:jsStrings.info.add_points, onClick:function(){
+                                    myApp.prompt(jsStrings.dialog.how_many_add, function(num){
+                                        num = num || 0;
                                         score += parseInt(num, 10);
                                         changeDaScoreYo(dis, score);
                                     }, null, 'number')
                                 }},
-                                {text:'Subtract Points', red:true, onClick:function(){
-                                    myApp.prompt("How many points would you like to subtract?", function(num){
-                                        myApp.confirm("Are you sure you want to subtract points? This will disable train counting.", function(){
+                                {text:jsStrings.info.sub_points, red:true, onClick:function(){
+                                    myApp.prompt(jsStrings.dialog.how_many_sub, function(num){
+                                        myApp.confirm(jsStrings.dialog.you_sure_sub, function(){
+                                            num = num || 0;
                                             score -= parseInt(num, 10);
                                             if (score < 0) score = 0;
                                             changeDaScoreYo(dis, score);
@@ -299,7 +321,7 @@ function changePoints(dis, score){
                                 }}
                             ],
                             [
-                                { text:'Go Back', bold:true, onClick: function(){
+                                { text:jsStrings.info.go_back, bold:true, onClick: function(){
                                     $$(dis).click();
                                 }}
                             ]
@@ -307,7 +329,7 @@ function changePoints(dis, score){
                 }}
             ],
             [
-                { text:'Cancel', bold:true}
+                { text:jsStrings.settings.cancel, bold:true}
             ]
         ]);
 }
@@ -326,34 +348,33 @@ function changeDaScoreYo(el, newVal){
 }
 
 function changeDaMothaTruckinTrainCountFoRealz(el, numTrainsRemoved){
-    var newText;
+    var localeVar = 'info.trains_left';
     var id = $$(el).parents('li').attr('data-id') * 1;
     for (var i = 0; i < todoData.length; i++) {
         if (todoData[i].id === id) {
             if (todoData[i].trains - numTrainsRemoved < 0){
-                myApp.alert('You cannot have negative trains. Please select another option.', 'Whoa there, partner!');
+                myApp.alert(jsStrings.dialog.neg_trains, jsStrings.dialog.whoa);
                 return false;
             }
             var newCount = todoData[i].trains - numTrainsRemoved;
             if (newCount < 0) newCount = 0;
-            newText = newCount + ' trains';
-            if (newCount == 1) newText = newText.substr(0, newText.length);
-            newText += ' left';
+            if (newCount == 1) {localeVar = 'info.train_left'; }
 
             todoData[i].trains = newCount;
             localStorage.td7Data = JSON.stringify(todoData);
         }
     }
-    $$(el).find('.train-count').text(newText);
+    $$(el).find('.val').text(newCount);
+    $$(el).find('.num-left-text').data('localize', localeVar);
     return true;
 }
 
 $$('.clear-scores').on('click', function(){
-    myApp.confirm('Are you sure you want to clear the scores?', function(){
+    myApp.confirm(jsStrings.settings.clear, function(){
         resetRemainingTrains();
         clearAllScores();
         myApp.closeModal('.popup-settings');
-    }, null, 'Whoa there, partner!');
+    }, null, jsStrings.dialog.whoa);
 });
 
 function clearAllScores(){
@@ -387,4 +408,12 @@ function disableTrainCounting(){
     };
     localStorage.ttrAppSettings = JSON.stringify(appSettings);
     buildSettingsPopup();
+}
+
+function getLanguage() {
+    if (navigator.language != undefined) {
+        if (navigator.language.substr(0,2) == 'es') { return 'es'; }
+        else if (navigator.language.substr(0,2) == 'fr') { return 'fr'; }
+    }
+    return 'en';
 }

@@ -1,0 +1,41 @@
+{
+    "title": "FRTTR French",
+	"settings": {
+		"title" : "FRSettings",
+		"number_trains" : "FRNumber of Trains",
+		"count_trains" : "FRCount Trains",
+		"cancel" : "FRCancel",
+		"save" : "FRSave",
+		"clear" : "FRClear Scores",
+		"ok" : "FROK"
+	},
+	"player" : {
+		"name_placeholder" : "FRPlayer Name",
+		"color" : "FRColor",
+		"player" : "FRPlayer",
+		"add_player" : "FRAdd Player",
+		"new_player" : "FRNew Player"
+	},
+	"dialog" : {
+		"played_trains" : "FRSelect the number of trains played.",
+		"whoa" : "FRWhoa there, partner!",
+		"you_sure_clear" : "FRAre you sure you want to clear the scores?",
+		"how_many_add" : "FRHow many points would you like to add?",
+		"midgame_change" : "FRIf you make this change mid-game, you will lose existing scores. Are you sure you want to continue?",
+		"how_many_sub" : "FRHow many points would you like to subtract?",
+		"you_sure_sub" : "FRAre you sure you want to subtract points? This will disable train counting.",
+        "points_adjust" : "FRSelect the points adjustment to be applied. Keep in mind, point adjustments do not affect remaining train counts.",
+        "neg_trains" : "FRYou cannot have negative trains. Please select another option."
+	},
+	"info" : {
+		"custom" : "FRCustom",
+		"trains" : "FRTrains",
+		"train" : "FRTrain",
+		"trains_left" : "FRtrains left",
+		"train_left" : "FRtrain left",
+		"add_points" : "FRAdd Points",
+		"sub_points" : "FRSubtract Points",
+		"go_back" : "FRGo Back",
+		"delete" : "FRDelete"
+	}
+}
