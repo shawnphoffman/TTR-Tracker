@@ -128,15 +128,17 @@ $$('.popup-settings .save-settings').on('click', function () {
 // Build Player HTML
 var todoItemTemplate = $$('#todo-item-template').html();
 function buildPlayerListHtml() {
+    loadJsStrings();
     var html = '';
     for (var i = 0; i < todoData.length; i++) {
         var todoItem = todoData[i];
+        var trainsLeftYo = todoItem.trains || 0;
         html += todoItemTemplate
                     .replace(/{{title}}/g, todoItem.title)
                     .replace(/{{color}}/g, todoItem.color)
                     .replace(/{{checked}}/g, todoItem.checked)
                     .replace(/{{score}}/g, todoItem.score || 0)
-                    .replace(/{{trains}}/g, todoItem.trains || 0)
+                    .replace(/{{trains}}/g, trainsLeftYo + ' ' + jsStrings.info.trains_left)
                     .replace(/{{id}}/g, todoItem.id);
     }
     $$('.todo-items-list ul').html(html);

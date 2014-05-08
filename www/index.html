@@ -105,7 +105,7 @@
                                             <div class="item-title label" data-localize="settings.count_trains" >Count Trains</div>
                                             <div class="item-input">
                                                 <label class="label-switch">
-                                                    <input type="checkbox" id="isCountTrains" name="isCountTrains">
+                                                    <input type="checkbox" id="isCountTrains" name="isCountTrains" checked>
                                                     <div class="checkbox"></div>
                                                 </label>
                                             </div>
@@ -117,7 +117,7 @@
                                         <div class="item-inner">
                                             <div class="item-title label" data-localize="settings.number_trains" >Number of Trains</div>
                                             <div class="item-input">
-                                                <input type="text" pattern="[0-9]*" id="num-trains" name="num-trains" placeholder="0">
+                                                <input type="text" pattern="[0-9]*" id="num-trains" name="num-trains" placeholder="45">
                                             </div>
                                         </div>
                                     </div>
@@ -136,7 +136,7 @@
       <li data-color="{{color}}" data-id="{{id}}" class="swipeout">
         <label class="label-checkbox item-content item-link swipeout-content player-data" data-id="{{id}}" data-score="{{score}}">
           <div class="item-inner" >
-            <div class="item-title">{{title}} <span class="train-count"><span class="val">{{trains}}</span> <span class="num-left-text" data-localize="info.trains_left"></span></span></div>
+            <div class="item-title">{{title}} <span class="train-count">{{trains}}</span></div>
               <div class="item-after item-score">{{score}}</div>
           </div>
         </label>
