@@ -2,19 +2,19 @@
     "title": "ESTTR Spanish",
 	"settings": {
 		"title" : "El Settings",
-		"number_trains" : "ESNumber of Trains",
+		"number_trains" : "Número de trenes",
 		"count_trains" : "ESCount Trains",
-		"cancel" : "ESCancelo",
-		"save" : "ESSavo",
-		"clear" : "ESClear el Scores",
-		"ok" : "ESOK"
+		"cancel" : "Cancelar",
+		"save" : "Guardar",
+		"clear" : "Puntajes Claras",
+		"ok" : "OK"
 	},
 	"player" : {
-		"name_placeholder" : "ESPlayer Name",
+		"name_placeholder" : "Nombre de Jugador",
 		"color" : "ESColor",
 		"player" : "ESPlayer",
-		"add_player" : "ESAdd Player",
-		"new_player" : "ESNew Player"
+		"add_player" : "Agregar Jugador",
+		"new_player" : "Nuevo Jugador"
 	},
 	"dialog" : {
 		"played_trains" : "ESSelect the number of trains played.",
@@ -33,9 +33,9 @@
 		"train" : "Tren",
 		"trains_left" : "EStrains left",
 		"train_left" : "EStrain left",
-		"add_points" : "ESAdd Points",
-		"sub_points" : "ESSubtract Points",
-		"go_back" : "ESGo Back",
+		"add_points" : "Añadir Puntos",
+		"sub_points" : "Eliminar Puntos",
+		"go_back" : "Regresar",
 		"delete" : "ESDelete"
 	}
 }

@@ -117,15 +117,19 @@
                                         <div class="item-inner">
                                             <div class="item-title label" data-localize="settings.number_trains" >Number of Trains</div>
                                             <div class="item-input">
-                                                <input type="text" pattern="[0-9]*" id="num-trains" name="num-trains" placeholder="45">
+                                                <input type="text" pattern="[0-9]*" id="num-trains" name="num-trains">
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-                        <div class="content-block"><a class="button button-big save-settings active" data-localize="settings.save" >Save</a></div>
-                        <div class="content-block"><a class="button button-big button-cancel clear-scores active" data-localize="settings.clear" >Clear Scores</a></div>
+                        <div class="content-block">
+                            <a class="button button-big save-settings active" data-localize="settings.save" >Save</a>
+                            <a class="button button-big button-cancel clear-scores active" data-localize="settings.clear" >Clear Scores</a>
+                            <a href="mailto:shawn.p.hoffman@gmail.com?subject=TTR Bug Report&body=Please describe the bug you found and what you believe caused it to occur." class="external button button-big button-bug report-bug active" data-localize="settings.bug" >Report a Bug</a>
+                            <a href="mailto:shawn.p.hoffman@gmail.com?subject=TTR Feature Request&body=Please describe your feature request." class="external button button-big button-feature suggest-feature active" data-localize="settings.feature" >Suggest a Feature</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -145,6 +149,7 @@
         </div>
       </li>
     </script>
+    <script type="text/javascript" src="phonegap.js"></script>
     <script type='application/javascript' src='js/fastclick.min.js'></script>
     <script type="text/javascript" src="js/framework7.js"></script>
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>

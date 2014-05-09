@@ -5,7 +5,11 @@ var myApp = new Framework7({
 
 var jsStrings;
 
+// Export selectors engine
+var $$ = Framework7.$;
+
 document.addEventListener("resume", onResume, false);
+
 function onResume() {
     loadJsStrings();
     $('.player-name').attr("placeholder", jsStrings.player.name_placeholder);
@@ -27,14 +31,44 @@ function loadJsStrings(){
     })();
 }
 
+function loadSettings(){
+    var tempChecked;
+    var tempCount;
+    if (localStorage != null
+        && localStorage.ttrAppSettings != null
+        && JSON.parse(localStorage.ttrAppSettings) != null)
+    {
+        tempChecked = JSON.parse(localStorage.ttrAppSettings).isCountTrains;
+        tempCount =  JSON.parse(localStorage.ttrAppSettings).numTrains;
+    } else{
+        tempChecked = true
+        tempCount =  45;
+    }
+    $('.popup-settings input[name="isCountTrains"]').prop('checked', tempChecked);
+    $('.popup-settings #num-trains').val(tempCount);
+
+}
+
 $(function(){
+    var appLaunchCount = window.localStorage.getItem('launchCount');
+    if(appLaunchCount){
+    }else{
+        window.localStorage.setItem('launchCount',1);
+        appSettings = {
+            isCountTrains: true,
+            numTrains: 45
+        };
+        localStorage.ttrAppSettings = JSON.stringify(appSettings);
+    }
+    loadSettings();
     loadJsStrings();
+
+    var todoData = localStorage.td7Data ? JSON.parse(localStorage.td7Data) : [];
+    var appSettings = localStorage.ttrAppSettings ? JSON.parse(localStorage.ttrAppSettings) : [];
+
     $("[data-localize]").localize("ttr", { language : getLanguage()} );
     $('.player-name').attr("placeholder", jsStrings.player.name_placeholder);
 });
-
-// Export selectors engine
-var $$ = Framework7.$;
 
 // Add views
 var mainView = myApp.addView('.view-main', {
@@ -273,13 +307,13 @@ function changePoints(dis, score){
                                                 }},
                                                 {text:jsStrings.info.sub_points, red:true, onClick:function(){
                                                     myApp.prompt(jsStrings.dialog.how_many_sub, function(num){
-                                                        myApp.confirm(jsStrings.dialog.you_sure_sub, function(){
+//                                                        myApp.confirm(jsStrings.dialog.you_sure_sub, function(){
                                                             num = num || 0;
                                                             score -= parseInt(num, 10);
                                                             if (score < 0) score = 0;
                                                             changeDaScoreYo(dis, score);
-                                                            disableTrainCounting();
-                                                        })
+//                                                            disableTrainCounting();
+//                                                        })
                                                     }, null, 'number')
                                                 }}
                                             ],
@@ -312,13 +346,13 @@ function changePoints(dis, score){
                                 }},
                                 {text:jsStrings.info.sub_points, red:true, onClick:function(){
                                     myApp.prompt(jsStrings.dialog.how_many_sub, function(num){
-                                        myApp.confirm(jsStrings.dialog.you_sure_sub, function(){
+//                                        myApp.confirm(jsStrings.dialog.you_sure_sub, function(){
                                             num = num || 0;
                                             score -= parseInt(num, 10);
                                             if (score < 0) score = 0;
                                             changeDaScoreYo(dis, score);
-                                            disableTrainCounting();
-                                        })
+//                                            disableTrainCounting();
+//                                        })
                                     }, null, 'number')
                                 }}
                             ],
@@ -350,7 +384,7 @@ function changeDaScoreYo(el, newVal){
 }
 
 function changeDaMothaTruckinTrainCountFoRealz(el, numTrainsRemoved){
-    var localeVar = 'info.trains_left';
+    var localeVar = jsStrings.info.trains_left;
     var id = $$(el).parents('li').attr('data-id') * 1;
     for (var i = 0; i < todoData.length; i++) {
         if (todoData[i].id === id) {
@@ -360,19 +394,19 @@ function changeDaMothaTruckinTrainCountFoRealz(el, numTrainsRemoved){
             }
             var newCount = todoData[i].trains - numTrainsRemoved;
             if (newCount < 0) newCount = 0;
-            if (newCount == 1) {localeVar = 'info.train_left'; }
+            if (newCount == 1) {localeVar = jsStrings.info.train_left; }
 
             todoData[i].trains = newCount;
             localStorage.td7Data = JSON.stringify(todoData);
         }
     }
-    $$(el).find('.val').text(newCount);
-    $$(el).find('.num-left-text').data('localize', localeVar);
+    var newTrainLabel = newCount + ' ' + localeVar;
+    $$(el).find('.train-count').text(newTrainLabel);
     return true;
 }
 
 $$('.clear-scores').on('click', function(){
-    myApp.confirm(jsStrings.settings.clear, function(){
+    myApp.confirm(jsStrings.dialog.you_sure_clear, function(){
         resetRemainingTrains();
         clearAllScores();
         myApp.closeModal('.popup-settings');
@@ -419,3 +453,14 @@ function getLanguage() {
     }
     return 'en';
 }
+
+
+
+$(document).off('click', '.external');
+$(document).on('click', ".external", function (e) {
+    e.preventDefault();
+    var targetURL = $(this).attr("href");
+    myApp.confirm("A mail client is required to be setup for this action.", function(){
+        var resp = window.open(targetURL, "_system", null);
+    }, null, "Reminder");
+});
