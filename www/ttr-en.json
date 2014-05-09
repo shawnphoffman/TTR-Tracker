@@ -25,7 +25,8 @@
 		"how_many_sub" : "How many points would you like to subtract?",
 		"you_sure_sub" : "Are you sure you want to subtract points? This will disable train counting.",
         "points_adjust" : "Select the points adjustment to be applied. Keep in mind, point adjustments do not affect remaining train counts.",
-        "neg_trains" : "You cannot have negative trains. Please select another option."
+        "neg_trains" : "You cannot have negative trains. Please select another option.",
+        "you_sure" : "Are you sure you want to do this?"
 	},
 	"info" : {
 		"custom" : "Custom",

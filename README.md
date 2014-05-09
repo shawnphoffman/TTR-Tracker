@@ -20,5 +20,7 @@ Using PhoneGap, the following codebase can be built for multiple platforms inclu
  - Compile Android
  - Edit username functionality
  - Game & winner tracking
+ - Final round trigger functionality
+ - Settings for final round trigger
 
 

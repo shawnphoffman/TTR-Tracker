@@ -124,15 +124,30 @@ $$('.popup .add-task').on('click', function () {
 $$('.popup-settings .save-settings').on('click', function () {
     var isCountTrains = ($$('.popup-settings input[name="isCountTrains"]').is(':checked'));
     if (!isCountTrains){
-        $$('.train-count').hide();
+        myApp.confirm(jsStrings.dialog.you_sure,
+            function(){
+                $$('.train-count').hide();
+                extendedSaveSettings();
+            }, function(){
+                $$('.train-count').showinline();
+                $('.popup-settings input[name="isCountTrains"]').prop('checked', true);
+            }, jsStrings.dialog.whoa);
     } else {
-        myApp.confirm(jsStrings.dialog.midgame_change, function(){
-            resetRemainingTrains();
-            clearAllScores();
-            $$('.train-count').showinline();
-        }, null, jsStrings.dialog.whoa);
+        myApp.confirm(jsStrings.dialog.midgame_change,
+            function(){
+                resetRemainingTrains();
+                clearAllScores();
+                $$('.train-count').showinline();
+                extendedSaveSettings();
+            }, function(){
+                $('.popup-settings input[name="isCountTrains"]').prop('checked', false);
+            }, jsStrings.dialog.whoa);
     }
 
+
+});
+
+function extendedSaveSettings(){
     var numTrains = $$('.popup-settings #num-trains').val();
 
     appSettings = {
@@ -157,7 +172,7 @@ $$('.popup-settings .save-settings').on('click', function () {
     }
     localStorage.ttrAppSettings = JSON.stringify(appSettings);
     myApp.closeModal('.popup-settings');
-});
+};
 
 // Build Player HTML
 var todoItemTemplate = $$('#todo-item-template').html();
@@ -453,6 +468,10 @@ function getLanguage() {
     }
     return 'en';
 }
+
+$('.settings-cancel').on('click', function(){
+    loadSettings();
+});
 
 
 
