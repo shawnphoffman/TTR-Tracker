@@ -5,6 +5,9 @@ var myApp = new Framework7({
 
 var jsStrings;
 
+var todoData = localStorage.td7Data ? JSON.parse(localStorage.td7Data) : [];
+var appSettings = localStorage.ttrAppSettings ? JSON.parse(localStorage.ttrAppSettings) : [];
+
 // Export selectors engine
 var $$ = Framework7.$;
 
@@ -63,8 +66,8 @@ $(function(){
     loadSettings();
     loadJsStrings();
 
-    var todoData = localStorage.td7Data ? JSON.parse(localStorage.td7Data) : [];
-    var appSettings = localStorage.ttrAppSettings ? JSON.parse(localStorage.ttrAppSettings) : [];
+    todoData = localStorage.td7Data ? JSON.parse(localStorage.td7Data) : [];
+    appSettings = localStorage.ttrAppSettings ? JSON.parse(localStorage.ttrAppSettings) : [];
 
     $("[data-localize]").localize("ttr", { language : getLanguage()} );
     $('.player-name').attr("placeholder", jsStrings.player.name_placeholder);
@@ -74,9 +77,6 @@ $(function(){
 var mainView = myApp.addView('.view-main', {
     dynamicNavbar: true
 });
-
-var todoData = localStorage.td7Data ? JSON.parse(localStorage.td7Data) : [];
-var appSettings = localStorage.ttrAppSettings ? JSON.parse(localStorage.ttrAppSettings) : [];
 
 $$('.popup').on('open', function () {
     $$('body').addClass('with-popup');
