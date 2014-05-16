@@ -128,6 +128,7 @@ $$('.popup-settings .save-settings').on('click', function () {
             function(){
                 $$('.train-count').hide();
                 extendedSaveSettings();
+                myApp.closeModal('.popup-settings');
             }, function(){
                 $$('.train-count').showinline();
                 $('.popup-settings input[name="isCountTrains"]').prop('checked', true);
@@ -139,6 +140,7 @@ $$('.popup-settings .save-settings').on('click', function () {
                 clearAllScores();
                 $$('.train-count').showinline();
                 extendedSaveSettings();
+                myApp.closeModal('.popup-settings');
             }, function(){
                 $('.popup-settings input[name="isCountTrains"]').prop('checked', false);
             }, jsStrings.dialog.whoa);
@@ -149,6 +151,7 @@ $$('.popup-settings .save-settings').on('click', function () {
 
 function extendedSaveSettings(){
     var numTrains = $$('.popup-settings #num-trains').val();
+    var isCountTrains = ($$('.popup-settings input[name="isCountTrains"]').is(':checked'));
 
     appSettings = {
         isCountTrains: isCountTrains,
@@ -227,7 +230,7 @@ $$('.todo-items-list').on('delete', '.swipeout', function () {
     }
 });
 
-// Update app when manifest updated 
+// Update app when manifest updated
 // http://www.html5rocks.com/en/tutorials/appcache/beginner/
 // Check if a new cache is available on page load.
 window.addEventListener('load', function (e) {
@@ -474,12 +477,11 @@ $('.settings-cancel').on('click', function(){
 });
 
 
-
 $(document).off('click', '.external');
-$(document).on('click', ".external", function (e) {
+$(document).on('click', '.external', function (e) {
     e.preventDefault();
-    var targetURL = $(this).attr("href");
+    var targetUrl = $(this).attr('href');
     myApp.confirm("A mail client is required to be setup for this action.", function(){
-        var resp = window.open(targetURL, "_system", null);
+      var resp = window.open(targetUrl, "_system", null);
     }, null, "Reminder");
 });
