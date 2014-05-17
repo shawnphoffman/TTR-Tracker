@@ -1,41 +1,46 @@
 {
-    "title": "FRTTR French",
-	"settings": {
-		"title" : "FRSettings",
-		"number_trains" : "FRNumber of Trains",
-		"count_trains" : "FRCount Trains",
-		"cancel" : "FRCancel",
-		"save" : "FRSave",
-		"clear" : "FRClear Scores",
-		"ok" : "FROK"
-	},
+    "title": "Gestionnaire de Wagons",
+	  "settings": {
+  		"title" : "Réglages",
+  		"number_trains" : "Nombre de wagons",
+  		"count_trains" : "Compter les wagons",
+  		"cancel" : "Annuler",
+  		"save" : "Enregistrer",
+  		"clear" : "Effacer les Scores",
+  		"ok" : "OK",
+      "feature" : "Suggérez une fonctionnalité",
+      "bug" : "Rapporter un bug"
+  	},
 	"player" : {
-		"name_placeholder" : "FRPlayer Name",
-		"color" : "FRColor",
-		"player" : "FRPlayer",
-		"add_player" : "FRAdd Player",
-		"new_player" : "FRNew Player"
+		"name_placeholder" : "Nom du joueur",
+		"color" : "Couleur",
+		"player" : "Joueur",
+		"add_player" : "Ajouter Joueur",
+		"new_player" : "Nouveau joueur"
 	},
 	"dialog" : {
-		"played_trains" : "FRSelect the number of trains played.",
-		"whoa" : "FRWhoa there, partner!",
-		"you_sure_clear" : "FRAre you sure you want to clear the scores?",
-		"how_many_add" : "FRHow many points would you like to add?",
-		"midgame_change" : "FRIf you make this change mid-game, you will lose existing scores. Are you sure you want to continue?",
-		"how_many_sub" : "FRHow many points would you like to subtract?",
-		"you_sure_sub" : "FRAre you sure you want to subtract points? This will disable train counting.",
-        "points_adjust" : "FRSelect the points adjustment to be applied. Keep in mind, point adjustments do not affect remaining train counts.",
-        "neg_trains" : "FRYou cannot have negative trains. Please select another option."
+		"played_trains" : "Choisissez le nombre de wagons en jeu.",
+		"whoa" : "Ne laissez pas partir ce train!",
+		"you_sure_clear" : "Êtes-vous sûr de vouloir effacer les scores?",
+		"how_many_add" : "Combien de points voulez-vous ajouter?",
+		"midgame_change" : "Si vous effectuez ce changement en cours de jeu, vous perdrez les scores existants. Êtes-vous sûr de continuer?",
+		"how_many_sub" : "Combien de points voulez-vous soustraire?",
+		"you_sure_sub" : "Êtes-vous sûr de vouloir soustraire des points? Cela aura pour conséquence de désactiver le décompte des wagons.",
+    "points_adjust" : "Choisissez l'ajustement de points à appliquer. Rappelez-vous que l'ajustement des points n'affecte pas le nombre de wagons restants.",
+    "neg_trains" : "Vous ne pouvez pas avoir un nombre négatif de wagons. S'il vous plaît, sélectionnez une autre option.",
+    "reminder" : "Rappel",
+    "email" : "Un client mail est nécessaire pour configurer cette action.",
+    "you_sure" : "Êtes-vous sûr de faire cela?"
 	},
 	"info" : {
-		"custom" : "FRCustom",
-		"trains" : "FRTrains",
-		"train" : "FRTrain",
-		"trains_left" : "FRtrains left",
-		"train_left" : "FRtrain left",
-		"add_points" : "FRAdd Points",
-		"sub_points" : "FRSubtract Points",
-		"go_back" : "FRGo Back",
-		"delete" : "FRDelete"
+		"custom" : "Personnalisé",
+		"trains" : "Wagons",
+		"train" : "Wagon",
+		"trains_left" : "Wagons",
+		"train_left" : "Wagon",
+		"add_points" : "Ajouter Points",
+		"sub_points" : "Soustraire Points",
+		"go_back" : "Retour",
+		"delete" : "Supprimer"
 	}
 }

@@ -1,5 +1,5 @@
 {
-    "title": "TTR Tracker",
+    "title": "TTR Train Tracker",
 	"settings": {
 		"title" : "Settings",
 		"number_trains" : "Number of Trains",
@@ -7,7 +7,9 @@
 		"cancel" : "Cancel",
 		"save" : "Save",
 		"clear" : "Clear Scores",
-		"ok" : "OK"
+		"ok" : "OK",
+    "feature" : "Suggest a Feature",
+    "bug" : "Report a Bug"
 	},
 	"player" : {
 		"name_placeholder" : "Player Name",
@@ -24,9 +26,11 @@
 		"midgame_change" : "If you make this change mid-game, you will lose existing scores. Are you sure you want to continue?",
 		"how_many_sub" : "How many points would you like to subtract?",
 		"you_sure_sub" : "Are you sure you want to subtract points? This will disable train counting.",
-        "points_adjust" : "Select the points adjustment to be applied. Keep in mind, point adjustments do not affect remaining train counts.",
-        "neg_trains" : "You cannot have negative trains. Please select another option.",
-        "you_sure" : "Are you sure you want to do this?"
+    "points_adjust" : "Select the points adjustment to be applied. Keep in mind, point adjustments do not affect remaining train counts.",
+    "neg_trains" : "You cannot have negative trains. Please select another option.",
+    "you_sure" : "Are you sure you want to do this?",
+    "reminder" : "Reminder",
+    "email_client" : "A mail client is required to be setup for this action."
 	},
 	"info" : {
 		"custom" : "Custom",

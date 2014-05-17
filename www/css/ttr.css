@@ -260,6 +260,7 @@ body.with-popup .statusbar-overlay {
 
 .popup-settings .list-block .item-title.label {
     width: 55%;
+    min-width: 200px;
 }
 
 label .item-inner .item-score{
