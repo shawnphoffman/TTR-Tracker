@@ -466,8 +466,8 @@ function disableTrainCounting(){
 
 function getLanguage() {
     if (navigator.language != undefined) {
-        if (navigator.language.substr(0,2) == 'es') { return 'es'; }
-        else if (navigator.language.substr(0,2) == 'fr') { return 'fr'; }
+        if (navigator.language.substr(0,2) == 'fr') { return 'fr'; }
+        //else if (navigator.language.substr(0,2) == 'es') { return 'es'; } // Pending localizations
     }
     return 'en';
 }
