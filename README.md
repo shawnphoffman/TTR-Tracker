@@ -1,4 +1,4 @@
-# TTR Tracker
+# TTR Tracker [![Build Status](https://travis-ci.org/shawnphoffman/TTR-Tracker.png)](https://travis-ci.org/shawnphoffman/TTR-Tracker)
 
 ## Description
 

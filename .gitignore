@@ -7,3 +7,4 @@ bower_components
 .cordova
 node_modules
 npm-debug.log
+*.min.css
