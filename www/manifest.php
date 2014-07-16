@@ -1,8 +1,8 @@
 <?php
 header('Content-Type: text/cache-manifest');
 $filesToCache = array(
-    './index.html', 
-    './js/ttr.js',
+    './index.html',
+    //'./js/ttr.js',
     './css/ttr.css',
     './ttr-en.json',
     './ttr-fr.json',

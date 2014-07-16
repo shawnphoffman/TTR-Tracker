@@ -1,4 +1,9 @@
 platforms
 .idea
 plugins
-x-config.xml
+merges
+hooks
+bower_components
+.cordova
+node_modules
+npm-debug.log
