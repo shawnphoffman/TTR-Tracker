@@ -1,159 +1,185 @@
 <!DOCTYPE html>
-<html manifest="manifest.php" class="with-statusbar-overlay">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<html lang="en">
+<head class="with-statusbar-overlay">
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <title>TTR Tracker</title>
 
-    <link rel="stylesheet" href="css/framework7.min.css">
-    <link rel="stylesheet" href="css/ttr.css">
-    <link rel="stylesheet" href="fonts/fonts.css">
-  </head>
-  <body>
+    <!-- <link rel="stylesheet" href="css/dist/framework7.min.css"> -->
+    <!-- <link rel="stylesheet" href="css/ttr.css"> -->
+    <!-- <link rel="stylesheet" href="css/fonts/fonts.css"> -->
+    <link rel="stylesheet" href="css/ttr-final.min.css">
+
+    <!-- Require JS -->
+    <script type="text/javascript" data-main="js/req" src="js/require.js"></script>
+    <!-- // <script type="text/javascript" src="js/require.js"></script> -->
+    <script>
+      // require.config({
+      //   paths: {
+      //     "main": "js/ttr-built"
+      //   }
+      // });
+      // require(["main"]);
+    </script>
+</head>
+<body>
+
     <!-- Statusbar overlay-->
     <div class="statusbar-overlay"></div>
+
+    <!-- Panels-->
+    <div class="panel-overlay"></div>
+    <!-- Left Panel -->
+    <div class="panel panel-left panel-reveal">
+        <div class="content-block-title">Settings</div>
+        <div class="list-block">
+            <ul>
+                <li class="panel-li">
+                  <a href="#" id="generalSettings" class="close-panel item-link open-popup" data-popup=".popup-settings">
+                    <div class="item-content">
+                        <div class="item-media"><i class="ttr-icon ttr-cog"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title">Game Settings</div>
+                        </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="panel-li">
+                  <a href="#" id="cheatSheets" class="close-panel item-link open-popup" data-popup=".popup-cheats">
+                    <div class="item-content">
+                        <div class="item-media"><i class="ttr-icon ttr-read"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title">TTR Cheat Sheets</div>
+                        </div>
+                    </div>
+                  </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content-block-title">Management</div>
+        <div class="list-block">
+            <ul>
+                <li class="panel-li">
+                  <a href="#" id="reviewScores" class="close-panel item-link">
+                    <div class="item-content">
+                        <div class="item-media"><i class="ttr-icon ttr-quill"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title">Review Scores</div>
+                        </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" id="clearScores" class="close-panel item-link">
+                    <div class="item-content warning-item">
+                        <div class="item-media"><i class="ttr-icon ttr-trash"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title">Clear Scores</div>
+                        </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" id="clearPlayers" class="close-panel item-link">
+                    <div class="item-content warning-item">
+                        <div class="item-media"><i class="ttr-icon ttr-trash"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title">Clear Players</div>
+                        </div>
+                    </div>
+                  </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content-block-title">About</div>
+        <div class="content-block">
+            <p>This project and source code is available on GitHub <span class="ttr-icon ttr-github"></span>.</p>
+            <p>For any issues or concerns, please visit shawnphoffman.com or github.com/shawnphoffman/ttr-tracker</p>
+            <p>Running slow? Try a <a href="#" id="refresh">refresh</a>.</p>
+        </div>
+    </div>
+
     <!-- Views-->
     <div class="views">
-      <div class="view view-main navbar-fixed">
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="left"><a href="#" data-popup=".popup-settings" class="link icon-only open-popup"><span class="icon icon-cog2"></span></a></div>
-            <div data-localize="title" class="center sliding">TTR Tracker</div>
-            <div class="right"><a href="#" data-popup=".popup-player" class="link icon-only open-popup"><span class="icon icon-plus"></span></a></div>
-          </div>
-        </div>
-        <div class="pages">
-          <div data-page="index" class="page">
-            <div class="page-content">
-              <div class="list-block todo-items-list">
-                <ul></ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Popup to add new task           -->
-    <div class="popup popup-player">
-      <div class="view view-popup navbar-fixed">
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="left"></div>
-            <div class="center sliding" data-localize="player.new_player" >New Player</div>
-            <div class="right"><a href="#" class="link close-popup" data-localize="settings.cancel" >Cancel</a></div>
-          </div>
-        </div>
-        <div class="pages">
-          <div class="page">
-            <div class="page-content">
-              <div class="list-block">
-                <ul>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-inner">
-                        <div class="item-title label" data-localize="player.player" >Player</div>
-                        <div class="item-input">
-                          <input type="text" name="title" class="player-name" autocapitalize="words" placeholder="Player Name">
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-inner color-selection">
-                        <div class="item-title label" data-localize="player.color" >Color</div>
-                        <div class="item-input">
-                            <span data-color="black" class="color selected"></span>
-                            <span data-color="purple" class="color"></span>
-                            <span data-color="blue" class="color"></span>
-                            <span data-color="green" class="color"></span>
-                            <span data-color="yellow" class="color"></span>
-                            <span data-color="orange" class="color"></span>
-                            <span data-color="red" class="color"></span>
-                            <span data-color="white" class="color"></span>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="content-block"><a class="button button-big add-task active" data-localize="player.add_player" >Add Player</a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="popup popup-settings">
-        <div class="view view-popup navbar-fixed">
+        <div class="view view-main navbar-fixed">
             <div class="navbar">
                 <div class="navbar-inner">
-                    <div class="left"></div>
-                    <div class="center sliding" data-localize="settings.title" >Settings</div>
-                    <div class="right"><a href="#" class="settings-cancel link close-popup" data-localize="settings.cancel" >Cancel</a></div>
+                    <div class="left">
+                        <a href="#" class="link icon-only open-panel">
+                          <span class="ttr-icon ttr-settings"></span>
+                        </a>
+                    </div>
+                    <div class="center sliding">TTR Tracker</div>
+                    <div class="right">
+                        <!-- <a href="#" id="reorderIcon" class="link icon-only toggle-sortable">
+                            <span class="ttr-icon ttr-reorder"></span>
+                        </a> -->
+                        <a href="#" id="addPlayerIcon" class="link icon-only">
+                            <span class="ttr-icon ttr-add"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="pages">
-                <div class="page">
+                <div data-page="index" class="page">
                     <div class="page-content">
-                        <div class="list-block">
-                            <ul>
-                                <li>
-                                    <div class="item-content">
-                                        <div class="item-inner">
-                                            <div class="item-title label" data-localize="settings.count_trains" >Count Trains</div>
-                                            <div class="item-input">
-                                                <label class="label-switch">
-                                                    <input type="checkbox" id="isCountTrains" name="isCountTrains" checked>
-                                                    <div class="checkbox"></div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-content">
-                                        <div class="item-inner">
-                                            <div class="item-title label" data-localize="settings.number_trains" >Number of Trains</div>
-                                            <div class="item-input">
-                                                <input type="text" pattern="[0-9]*" id="num-trains" name="num-trains">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
+                      <div class="list-block players-list tablet-inset">
+                        <div id="player-list">
+
                         </div>
-                        <div class="content-block">
-                            <a class="button button-big save-settings active" data-localize="settings.save" >Save</a>
-                            <a class="button button-big button-cancel clear-scores active" data-localize="settings.clear" >Clear Scores</a>
-                            <a href="mailto:shawn.p.hoffman@gmail.com?subject=TTR Bug Report&body=Please describe the bug you found and what you believe caused it to occur." class="external button button-big button-bug report-bug active" data-localize="settings.bug" >Report a Bug</a>
-                            <a href="mailto:shawn.p.hoffman@gmail.com?subject=TTR Feature Request&body=Please describe your feature request." class="external button button-big button-feature suggest-feature active" data-localize="settings.feature" >Suggest a Feature</a>
-                        </div>
+                      </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Template-->
-    <script id="todo-item-template" type="template">
-      <li data-color="{{color}}" data-id="{{id}}" class="swipeout">
-        <label class="label-checkbox item-content item-link swipeout-content player-data" data-id="{{id}}" data-score="{{score}}">
-          <div class="item-inner" >
-            <div class="item-title">{{title}} <span class="train-count">{{trains}}</span></div>
-              <div class="item-after item-score">{{score}}</div>
-          </div>
-        </label>
-        <div class="swipeout-actions">
-          <div class="swipeout-actions-inner"><a href="#" class="swipeout-delete" data-localize="info.delete">Delete</a></div>
+
+    <!-- // Settings Popup -->
+    <div class="popup popup-settings">
+        <div class="view navbar-fixed">
+            <div class="page">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="center">Tracker Settings</div>
+                        <div class="right"><a href="#" class="link close-popup">Done</a></div>
+                    </div>
+                </div>
+                <div class="page-content" id="tracker-settings">
+                  <div class="content-block-title" style="margin-top: 20px">Ticket to Ride Version</div>
+                    <div class="list-block">
+                      <div id="version-list">
+                        <!-- Versions go here-->
+                      </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </li>
-    </script>
-    <script type="text/javascript" src="phonegap.js"></script>
-    <script type='application/javascript' src='js/fastclick.min.js'></script>
-    <script type="text/javascript" src="js/framework7.js"></script>
-    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.localize.min.js"></script>
-    <script type="text/javascript" src="js/ttr.js"></script>
-  </body>
+    </div>
+
+    <!-- // Cheat Sheet Popup -->
+    <div class="popup popup-cheats">
+        <div class="view navbar-fixed">
+            <div class="page">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="center">TTR Cheat Sheets</div>
+                        <div class="right"><a href="#" class="link close-popup">Done</a></div>
+                    </div>
+                </div>
+                <div class="page-content" id="tracker-settings">
+                  <div class="content-block-title" style="margin-top: 20px;">TTR Versions</div>
+                  <div class="list-block accordion-list">
+                    <div id="cheats">
+                      <!-- CHEATS -->
+                    </ul>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>

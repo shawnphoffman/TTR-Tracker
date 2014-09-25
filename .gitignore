@@ -1,4 +1,8 @@
-platforms
 .idea
+hooks
+merges
+platforms
 plugins
-x-config.xml
+bower_components
+node_modules
+.DS_Store

@@ -1,0 +1,528 @@
+[
+  {
+    "version": "Custom",
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "currentVersion":false,
+    "notes": [
+      "House rules apply.",
+      "Train tracking is disabled."
+    ]
+  },
+  {
+    "version": "USA",
+    "isBase": true,
+    "numTrains": 45,
+    "minPlayer": 2,
+    "maxPlayer": 5,
+    "startDestTicks": 3,
+    "startDestTicksKeep": 2,
+    "pullDestTicks": 3,
+    "pullDestTicksKeep": 1,
+    "trainTicks": 4,
+    "bonus": [
+      "Longest Route +10"
+    ],
+    "doubleActive": 4,
+    "gameEnd": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "currentVersion":true
+  },
+  {
+    "version": "Europe",
+    "isBase": true,
+    "numTrains": 45,
+    "minPlayer": 2,
+    "maxPlayer": 5,
+    "startDestTicks": 3,
+    "startDestTicksKeep": 2,
+    "pullDestTicks": 3,
+    "pullDestTicksKeep": 1,
+    "trainTicks": 4,
+    "bonus": [
+      "European Express +10"
+    ],
+    "doubleActive": 4,
+    "notes": [
+      "1 long route ticket per player",
+      "Ferries",
+      "Tunnels",
+      "Train stations (4 points/each)"
+    ],
+    "gameEnd": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      8
+    ],
+    "currentVersion":false
+  },
+  {
+    "version": "Nordic Countries",
+    "isBase": true,
+    "numTrains": 40,
+    "minPlayer": 2,
+    "maxPlayer": 3,
+    "startDestTicks": 5,
+    "startDestTicksKeep": 2,
+    "pullDestTicks": 3,
+    "pullDestTicksKeep": 1,
+    "trainTicks": 4,
+    "bonus": [
+      "Globetrotter +10"
+    ],
+    "doubleActive": 3,
+    "notes": [
+      "No locomotive restriction",
+      "Ferries",
+      "Tunnels"
+    ],
+    "gameEnd": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      9
+    ],
+    "currentVersion":false
+  },
+  {
+    "version": "Marklin",
+    "isBase": true,
+    "numTrains": 45,
+    "minPlayer": 2,
+    "maxPlayer": 5,
+    "startDestTicks": 4,
+    "startDestTicksKeep": 2,
+    "pullDestTicks": 4,
+    "pullDestTicksKeep": 1,
+    "trainTicks": 4,
+    "bonus": [
+      "Most Tickets Completed +10"
+    ],
+    "doubleActive": 4,
+    "notes": [
+      "Long & Short Routes",
+      "Passengers",
+      "Merchandise Tokens",
+      "Wild Cards",
+      "Locomotive +4 Cards (No draw restriction)"
+    ],
+    "gameEnd": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "currentVersion":false
+  },
+  {
+    "version": "USA 1910",
+    "isBase": false,
+    "numTrains": 45,
+    "minPlayer": 2,
+    "maxPlayer": 5,
+    "bonus": [
+      "Globetrotter +15"
+    ],
+    "startDestTicks": 3,
+    "startDestTicksKeep": 2,
+    "pullDestTicks": 3,
+    "pullDestTicksKeep": 1,
+    "trainTicks": 4,
+    "doubleActive": 4,
+    "gameEnd": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "notes": [
+      "Only use destination tickets with 1910 logos"
+    ],
+    "currentVersion":false
+  },
+  {
+    "version": "USA Mega Game",
+    "isBase": false,
+    "numTrains": 45,
+    "minPlayer": 2,
+    "maxPlayer": 5,
+    "bonus": [
+      "Globetrotter +15",
+      "Longest Route +10"
+    ],
+    "startDestTicks": 5,
+    "startDestTicksKeep": 3,
+    "pullDestTicks": 4,
+    "pullDestTicksKeep": 1,
+    "trainTicks": 4,
+    "doubleActive": 4,
+    "gameEnd": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "currentVersion":false
+  },
+  {
+    "version": "USA Big Cities",
+    "isBase": false,
+    "numTrains": 45,
+    "minPlayer": 2,
+    "maxPlayer": 5,
+    "bonus": [
+      "Globetrotter +15"
+    ],
+    "startDestTicks": 4,
+    "startDestTicksKeep": 2,
+    "pullDestTicks": 4,
+    "pullDestTicksKeep": 1,
+    "trainTicks": 4,
+    "doubleActive": 4,
+    "gameEnd": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "notes": [
+      "Big cities listed in red on destination tickets"
+    ],
+    "currentVersion":false
+  },
+  {
+    "version": "Europe Expanded",
+    "isBase": false,
+    "numTrains": 45,
+    "minPlayer": 2,
+    "maxPlayer": 5,
+    "startDestTicks": 3,
+    "startDestTicksKeep": 2,
+    "pullDestTicks": 3,
+    "pullDestTicksKeep": 1,
+    "trainTicks": 4,
+    "bonus": [
+      "European Express +10"
+    ],
+    "doubleActive": 4,
+    "notes": [
+      "Add 1912 logo destinations with originals",
+      "Ferries",
+      "Tunnels",
+      "Train Stations (4 points/each)"
+    ],
+    "gameEnd": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      8
+    ],
+    "currentVersion":false
+  },
+  {
+    "version": "Mega Europe",
+    "isBase": false,
+    "numTrains": 45,
+    "minPlayer": 2,
+    "maxPlayer": 5,
+    "startDestTicks": 5,
+    "startDestTicksKeep": 2,
+    "pullDestTicks": 3,
+    "pullDestTicksKeep": 1,
+    "trainTicks": 4,
+    "bonus": [
+      "European Express +10"
+    ],
+    "doubleActive": 4,
+    "notes": [
+      "Deal 2 long routes each. Keep one or none.",
+      "If player keeps long route, keep 2 regular.",
+      "If no long route, keep 3 regular tickets.",
+      "Ferries",
+      "Tunnels",
+      "Train Stations (4 points/each)"
+    ],
+    "gameEnd": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      8
+    ],
+    "currentVersion":false
+  },
+  {
+    "version": "Big Cities of Europe",
+    "isBase": false,
+    "numTrains": 45,
+    "minPlayer": 2,
+    "maxPlayer": 5,
+    "startDestTicks": 5,
+    "startDestTicksKeep": 2,
+    "pullDestTicks": 4,
+    "pullDestTicksKeep": 1,
+    "trainTicks": 4,
+    "doubleActive": 4,
+    "notes": [
+      "Big City cards only",
+      "Ferries",
+      "Tunnels",
+      "Train stations (4 points/each)"
+    ],
+    "gameEnd": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      8
+    ],
+    "currentVersion":false
+  },
+  {
+    "version": "Legendary Asia",
+    "isBase": false,
+    "numTrains": 45,
+    "mapCollection": 1,
+    "minPlayer": 2,
+    "maxPlayer": 5,
+    "startDestTicks": 4,
+    "startDestTicksKeep": 2,
+    "pullDestTicks": 3,
+    "pullDestTicksKeep": 1,
+    "trainTicks": 4,
+    "bonus": [
+      "Asian Explorer +10"
+    ],
+    "doubleActive": 4,
+    "gameEnd": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "notes": [
+      "Deal 1 long route, 3 short. Keep at least 2.",
+      "Ferries",
+      "Mountain Routes"
+    ],
+    "currentVersion":false
+  },
+  {
+    "version": "Team Asia",
+    "isBase": false,
+    "numTrains": 27,
+    "mapCollection": 1,
+    "minPlayer": 4,
+    "maxPlayer": 6,
+    "startDestTicks": 5,
+    "startDestTicksKeep": 3,
+    "pullDestTicks": 4,
+    "pullDestTicksKeep": 1,
+    "trainTicks": 4,
+    "bonus": [
+      "Longest Route +10",
+      "Globetrotter +10"
+    ],
+    "doubleActive": 5,
+    "gameEnd": 4,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "notes": [
+      "Each team gets 2 matching sets of 27 trains",
+      "Drawing cards split between personal and team hands",
+      "One starting ticket goes to team ticket pile",
+      "Tunnels",
+      "Turn can be spent moving up to 2 destination tickets to team pile.",
+      "Teammates can claim both double/triples",
+      "Game end triggered on combined stock of trains"
+    ],
+    "currentVersion":false
+  },
+  {
+    "version": "India",
+    "isBase": false,
+    "numTrains": 45,
+    "mapCollection": 2,
+    "minPlayer": 2,
+    "maxPlayer": 4,
+    "startDestTicks": 4,
+    "startDestTicksKeep": 2,
+    "pullDestTicks": 3,
+    "pullDestTicksKeep": 1,
+    "trainTicks": 4,
+    "bonus": [
+      "Longest Route +10",
+      "Grand Tour (Looping)"
+    ],
+    "doubleActive": 4,
+    "gameEnd": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      8
+    ],
+    "notes": [
+      "Ferries"
+    ],
+    "currentVersion":false
+  },
+  {
+    "version": "Switzerland",
+    "isBase": false,
+    "numTrains": 40,
+    "mapCollection": 2,
+    "minPlayer": 2,
+    "maxPlayer": 3,
+    "startDestTicks": 5,
+    "startDestTicksKeep": 2,
+    "pullDestTicks": 3,
+    "pullDestTicksKeep": 1,
+    "trainTicks": 4,
+    "bonus": [
+      "Longest Route +10",
+      "Grand Tour (Looping)"
+    ],
+    "doubleActive": 3,
+    "gameEnd": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "notes": [
+      "Country Tickets",
+      "Discarded destination tickets are removed from the game",
+      "Tunnels",
+      "No locomotive draw restriction",
+      "Locomotives only apply to tunnels"
+    ],
+    "currentVersion":false
+  },
+  {
+    "version": "Heart of Africa",
+    "isBase": false,
+    "numTrains": 45,
+    "mapCollection": 3,
+    "minPlayer": 2,
+    "maxPlayer": 5,
+    "startDestTicks": 4,
+    "startDestTicksKeep": 2,
+    "pullDestTicks": 4,
+    "pullDestTicksKeep": 1,
+    "bonus": [
+      "Globetrotter +10"
+    ],
+    "trainTicks": 4,
+    "gameEnd": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "notes": [
+      "Terrain Cards",
+      "1, 2, 3 space routes = 1 terrain",
+      "4, 5, 6 space routes = 2 terrain",
+      "MUST KEEP SCORE DURING GAME"
+    ],
+    "currentVersion":false
+  },
+  {
+    "version": "Nederlands",
+    "isBase": false,
+    "numTrains": 40,
+    "mapCollection": 4,
+    "minPlayer": 2,
+    "maxPlayer": 5,
+    "startDestTicks": 5,
+    "startDestTicksKeep": 3,
+    "pullDestTicks": 4,
+    "pullDestTicksKeep": 1,
+    "bonus": [
+      "5 player (55,35,20,10,0)",
+      "4 player (55,35,20,0)",
+      "3 player (55,35,0)",
+      "2 player (35,0)"
+    ],
+    "trainTicks": 4,
+    "gameEnd": 2,
+    "doubleActive": 2,
+    "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "notes": [
+      "Offset initial scoring!",
+      "Bridge Tolls",
+      "2-player Neutral Player variant",
+      "Discarded destination tickets placed face-up. Eligible for reshuffle."
+    ],
+    "currentVersion":false
+  }
+]

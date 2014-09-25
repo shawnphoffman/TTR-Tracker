@@ -1,4 +1,7 @@
+[![Stories in Ready](https://badge.waffle.io/nolimits4web/framework7.png?label=ready&title=Ready)](https://waffle.io/nolimits4web/framework7)
 [![Build Status](https://travis-ci.org/nolimits4web/Framework7.svg?branch=master)](https://travis-ci.org/nolimits4web/Framework7)
+[![devDependency Status](https://david-dm.org/nolimits4web/framework7/dev-status.svg)](https://david-dm.org/nolimits4web/framework7#info=devDependencies)
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=nolimits4web&url=https://github.com/nolimits4web/framework7/&title=Framework7&language=JavaScript&tags=github&category=software)
 
 Framework7
 ==========
@@ -61,9 +64,37 @@ $ grunt dist
 
 Distributable version will available in `dist/` folder.
 
+## Custom build
+
+You can build custom version of Framework7 with only required components/modules. For example, if we need to include only Accordion, Modals and Tabs modules in addition to Framework 7 core: 
+
+```
+$ grunt custom:accordion,modals,tabs
+```
+After that you will find created `custom/` folder with generated JS and CSS files. Here is the list of available additional modules:
+
+* accordion
+* searchbar
+* messages
+* modals
+* swipeout
+* sortable
+* smart-select
+* pull-to-refresh
+* infinite-scroll
+* tabs
+* fast-clicks
+* forms (means Ajax forms and forms storage)
+* push-state
+* slider
+* photo-browser
+* notifications
+
 ## Contributing
 
 All changes should be commited to `src/` files. Framework7 uses LESS for CSS compliations, and concatenated JS files (look at Gruntfile.js for concat files order)
+
+If you want to help in Framework7 development and make it event better visit this page: http://www.idangero.us/framework7/contribute/
 
 ## Forum
 
@@ -71,4 +102,12 @@ If you have questions about Framework7 or want to help others you are welcome to
 
 ## Docs
 
-Coming soon...
+Documentation available at http://idangero.us/framework7/docs/
+
+## Tutorials
+
+Tutorials available at http://idangero.us/framework7/tutorials/
+
+## Showcase
+
+Appstore apps made with Framework7: http://idangero.us/framework7/showcase/

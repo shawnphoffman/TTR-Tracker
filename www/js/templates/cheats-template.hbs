@@ -1,0 +1,92 @@
+<a href="#" class="item-link item-content">
+  <div class="item-inner">
+    <div class="item-title">{{ version }}</div>
+  </div>
+</a>
+
+<div class="accordion-item-content">
+
+
+  {{#ifCond version 'Custom' }}
+  {{else}}
+    <div class="content-block inset">
+      {{#if isBase}}
+      <h2>TTR Base Game</h2>
+      {{else}}
+        <h2>TTR Expansion</h2>
+        {{#if mapCollection}}
+          <ul>
+            <li>Map Collection: #{{mapCollection}}</li>
+          </ul>
+        {{/if}}
+      {{/if}}
+    </div>
+
+    <div class="content-block inset">
+      {{#if numTrains}}
+      <h2># of Trains: {{numTrains}}</h2>
+      {{/if}}
+
+      {{#if minPlayer}}
+      <h2># of Players: {{minPlayer}} - {{maxPlayer}}</h2>
+      {{/if}}
+
+      {{#if gameEnd}}
+      <h2>Final Turn: &lt;= {{gameEnd}} trains</h2>
+      {{/if}}
+
+      {{#if doubleActive}}
+      <h2>Double Routes: &gt;= {{doubleActive}} players</h2>
+      {{/if}}
+    </div>
+
+    <div class="content-block inset">
+      <h2>Destination Tickets (Pull / Keep)</h2>
+      <ul>
+        <li>Starting: {{startDestTicks}} / {{startDestTicksKeep}}</li>
+        <li>In-Game: {{pullDestTicks}} / {{pullDestTicksKeep}}</li>
+      </ul>
+    </div>
+
+    <div class="content-block inset">
+      <h2>Train Tickets</h2>
+      <ul>
+        <li>Dealt: {{trainTicks}}</li>
+        <li>Face-Up: 5</li>
+      </ul>
+    </div>
+
+    {{#if routesAvail}}
+    <div class="content-block inset">
+      <h1>Route Lengths Available</h1>
+      <span>|
+        {{#each routesAvail}}{{ this }} | {{/each}}
+      </span>
+    </div>
+    {{/if}}
+
+    {{#if bonus}}
+    <div class="content-block inset">
+      <h1>End-Game Bonuses</h1>
+      <ul>
+        {{#each bonus}}
+        <li>{{ this }}</li>
+        {{/each}}
+      </ul>
+    </div>
+    {{/if}}
+
+  {{/ifCond}}
+
+  {{#if notes}}
+  <div class="content-block inset">
+    <h1>Notes</h1>
+    <ul>
+      {{#each notes}}
+      <li>{{ this }}</li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+
+</div>
