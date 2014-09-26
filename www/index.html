@@ -15,15 +15,15 @@
     <link rel="stylesheet" href="css/ttr-final.min.css">
 
     <!-- Require JS -->
-    <script type="text/javascript" data-main="js/req" src="js/require.js"></script>
-    <!-- // <script type="text/javascript" src="js/require.js"></script> -->
+    <!--<script type="text/javascript" data-main="js/req" src="js/require.js"></script>-->
+    <script type="text/javascript" src="js/require.js"></script>
     <script>
-      // require.config({
-      //   paths: {
-      //     "main": "js/ttr-built"
-      //   }
-      // });
-      // require(["main"]);
+      require.config({
+        paths: {
+          "main": "js/ttr-built"
+        }
+      });
+      require(["main"]);
     </script>
 </head>
 <body>
@@ -108,9 +108,9 @@
         <div class="view view-main navbar-fixed">
             <div class="navbar">
                 <div class="navbar-inner">
-                    <div class="left">
+                    <div class="left open-panel">
                         <a href="#" class="link icon-only open-panel">
-                          <span class="ttr-icon ttr-settings"></span>
+                          <span class="ttr-icon ttr-settings open-panel"></span>
                         </a>
                     </div>
                     <div class="center sliding">TTR Tracker</div>

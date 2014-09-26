@@ -91,7 +91,11 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
           }
           ttrApp.scoresCollection.renameScores(self.model.get('id'), name);
           self.model.set({'name': name}).save();
-          self.render();
+
+          ttrApp.playersView.remove();
+          ttrApp.playersView.render();
+          $('#player-list').html(ttrApp.playersView.el);
+          
           ttrTracker.modal({
             title: 'Loading...',
             afterText: '<img src="css/img/loading-spinning-bubbles.svg" alt="Loading icon" />'
