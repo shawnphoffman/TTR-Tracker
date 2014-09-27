@@ -18,9 +18,7 @@ define([
           //console.log("ScoreCollection - Scores Reset");
 
           ttrApp.playersView.remove();
-          // ttrApp.playersView = new PlayerCollectionView();
           ttrApp.playersView.render();
-          //console.log(ttrApp.playersView.el);
           // $('#player-list').html(ttrApp.playersView.el);
         });
       },
@@ -30,7 +28,7 @@ define([
 
         _.invoke($(this.models).toArray(), 'destroy');
 
-        ttrApp.playersView.remove();
+        // ttrApp.playersView.remove();
         ttrApp.playersView.render();
         $('#player-list').html(ttrApp.playersView.el);
       },

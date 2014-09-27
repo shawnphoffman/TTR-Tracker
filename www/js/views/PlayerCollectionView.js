@@ -7,7 +7,8 @@ define(['Backbone', 'Marionette', 'views/PlayerView'],
       className: "players",
 
       initialize: function(){
-        this.listenTo(this.collection, 'update', this.render);
+        // this.listenTo(this.collection, 'update', this.render);
+        // this.listenTo(this.collection, 'add', this.render);
       },
 
       getChildView: function(item) {
@@ -41,18 +42,15 @@ define(['Backbone', 'Marionette', 'views/PlayerView'],
           }
           self.collection.create({name: name});
           ttrTracker.closeModal();
-          // ttrApp.playersView.render();
+          ttrApp.playersView.render();
         });
       },
 
-      // onBeforeAddChild: function(){
-      //   //console.log('PlayerCollectionView - onBeforeAddChild');
-      // },
-      //
-      // onAddChild: function(){
-      //   //console.log('PlayerCollectionView - onAddChild');
-      // }
-
+      renderDatShit: function(){
+        ttrApp.playersView.remove();
+        ttrApp.playersView.render();
+        $('#player-list').html(ttrApp.playersView.el);
+      }
     });
 
     return PlayerCollectionView;

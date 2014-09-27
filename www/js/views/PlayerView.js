@@ -4,70 +4,54 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
     PlayerView = Backbone.Marionette.ItemView.extend( {
       tagName:  "li",
 
-      className: 'swipeout',
+      className: '',
 
       model: Player,
 
       events: {
-        'click .player-data' : 'toggleActions',
-        'click .swipeout-delete' : 'deletePlayer'
+        'click .player-data' : 'toggleActions'
       },
 
       initialize: function() {
-        // if (this.model.attributes) {
-        //   this.listenTo(this.model, 'update', this.render);
-        // }
+        if (this.model.attributes) {
+          // this.listenTo(this.model, 'update', this.render);
+        }
       },
 
       toggleActions: function() {
         //console.log('Toggling: ' + this.model.get('name'));
 
         var self = this;
-        var name = self.model.get('name');
-        name = name.charAt(0).toUpperCase() + name.substring(1);
-        var t = $('.swipeout-opened');
-        if (t.length > 0) {
-          return false;
-        }
-        else {
-          ttrTracker.actions(
-          [
-            [
-              {text: 'Settings for ' + name, label:true},
-              {text:'Edit Name', onClick:function(){
-                self.editPlayerName();
-              }},
-              {text:'Change Color', onClick:function(){
-                self.editPlayerColor();
-              }}
-            ],[
-              {text: 'Actions for ' + name, label:true},
-              {text:'Add Points', onClick:function(){
-                self.displayAddPointsMenu();
-              }},
-              {text:'Subtract Points', onClick:function(){
-                self.displayRemovePointsMenu();
-              }},
-              {text:'Review Points', onClick:function(){
-                self.reviewPointsByName();
-              }},
-              {text:'* Fast Scoring *', onClick:function(){
-                self.quickPoints();
-              }, bold:true}
-            ],
-            [
-                { text:'Cancel', color:'red'}
-            ]
-          ]);
-        }
+        var ar = self.buildAddPointsMenu();
+        ttrTracker.actions([
+          ar,
+          [{ text:'More Options...', onClick:function(){ self.displayMoreMenu(); }}],
+          [{ text:'Cancel', color:'red' }]
+        ]);
       },
 
       deletePlayer: function(){
         //console.log('Deleting: ' + this.model.get('name'));
 
+        $('div[data-name*='+this.model.get('id')+']').closest('li.swipeout').remove();
+
         ttrApp.scoresCollection.removePlayerScores(this.model.get('id'));
-        this.model.destroy();
+        if (this.model){
+          this.model.destroy({silent:true});
+        }
         ttrApp.playersCollection.reSort();
+      },
+
+      removePlayer: function(){
+        //console.log('Removing: ' + this.model.get('name'));
+
+        ttrApp.scoresCollection.removePlayerScores(this.model.get('id'));
+        if (this.model){
+          this.model.destroy({silent:true});
+        }
+        ttrApp.playersCollection.reSort();
+        ttrApp.playersView.renderDatShit();
+
       },
 
       editPlayerName: function(){
@@ -90,12 +74,10 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
             name = newName;
           }
           ttrApp.scoresCollection.renameScores(self.model.get('id'), name);
-          self.model.set({'name': name}).save();
+          self.model.set({'name': name}, {silent:true}).save();
 
-          ttrApp.playersView.remove();
-          ttrApp.playersView.render();
-          $('#player-list').html(ttrApp.playersView.el);
-          
+          $('div[data-id*='+self.model.get('id')+']').text(name);
+
           ttrTracker.modal({
             title: 'Loading...',
             afterText: '<img src="css/img/loading-spinning-bubbles.svg" alt="Loading icon" />'
@@ -131,7 +113,7 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
                 onClick: function (){},
                 close:true,
             }],
-            onClick: function(index){
+            onClick: function(){
             }
         });
 
@@ -143,8 +125,8 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
         });
       },
 
-      displayAddPointsMenu: function(){
-        //console.log('Adding points: ' + this.model.get('name'));
+      buildAddPointsMenu: function(){
+        //console.log('buildAddPointsMenu');
 
         var self = this;
 
@@ -163,23 +145,67 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
             }});
 
           });
-          ar.push({text: 'Add Custom Points', onClick:function(){
-            ttrTracker.prompt('Enter custom point value to add', function(value){
-              value = value || 0;
-              if(!isNaN(value))
-              {
-                var score = new Score({'score':parseInt(value, 10),
-                                       'trains':0,
-                                       'date':Date.now(),
-                                       'player':self.model.get('name'),
-                                       'playerID':self.model.get('id')
-                                      });
-                self.applyPoints(score);
-              }
-            }, null, 'number');
-          }});
 
-          ttrTracker.actions([ar, [{text: 'Go Back', onClick:function(){ self.toggleActions(); }, color:'red'}]]);
+          return ar;
+        }
+        return [];
+      },
+
+      displayMoreMenu: function(){
+        //console.log('displayMoreMenu');
+
+        var self = this;
+        var name = self.model.get('name');
+        name = name.charAt(0).toUpperCase() + name.substring(1);
+        var t = $('.swipeout-opened');
+        if (t.length > 0) {
+          return false;
+        }
+        else {
+          ttrTracker.actions(
+          [
+            [
+              {text: 'Settings for ' + name, label:true},
+              {text:'Edit Name', onClick:function(){
+                self.editPlayerName();
+              }},
+              {text:'Change Color', onClick:function(){
+                self.editPlayerColor();
+              }},
+              {text:'Remove Player', onClick:function(){
+                self.removePlayer();
+              }}
+            ],[
+              {text: 'Actions for ' + name, label:true},
+              {text: 'Add Custom Points', onClick:function(){
+                ttrTracker.prompt('Enter custom point value to add', function(value){
+                  value = value || 0;
+                  if(!isNaN(value))
+                  {
+                    var score = new Score({'score':parseInt(value, 10),
+                                           'trains':0,
+                                           'date':Date.now(),
+                                           'player':self.model.get('name'),
+                                           'playerID':self.model.get('id')
+                                          });
+                    self.applyPoints(score);
+                  }
+                }, null, 'number');
+              }},
+              {text:'Subtract Points', onClick:function(){
+                self.displayRemovePointsMenu();
+              }},
+              {text:'Review Points', onClick:function(){
+                self.reviewPointsByName();
+              }},
+              {text:'* Fast Scoring *', onClick:function(){
+                self.quickPoints();
+              }, bold:true}
+            ],
+            [{text: 'Go Back', onClick:function(){
+              self.toggleActions(); }, color:'red'
+            }]
+          ]);
         }
       },
 
@@ -220,7 +246,7 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
             }, null, 'number');
           }});
 
-          ttrTracker.actions([ar, [{text: 'Go Back', onClick:function(){ self.toggleActions(); }, color:'red'}]]);
+          ttrTracker.actions([ar, [{text: 'Go Back', onClick:function(){ self.displayMoreMenu(); }, color:'red'}]]);
         }
       },
 
@@ -350,8 +376,8 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
 
         this.model.set({'trainsLeft':trains, 'score':score}, {silent:true});
 
-        // //console.log('calculateScoreValues - score', score);
-        // //console.log('calculateScoreValues - trains', trains);
+        //console.log('calculateScoreValues - score', score);
+        //console.log('calculateScoreValues - trains', trains);
 
         this.model.set({'trainsLeft':trains, 'score':score}, {silent:true});
       },

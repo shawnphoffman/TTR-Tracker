@@ -56,15 +56,14 @@ require([
               underscore){
 
   ttrTracker = new Framework7({
-      modalTitle: 'TTR Train Tracker',
-      fastClicksDistanceThreshold: 5
+      modalTitle: 'TTR Train Tracker'
   });
   $$ = Framework7.$;
 
   // MARIONETTE APP
   ttrApp = new Backbone.Marionette.Application();
   ttrApp.on('start', function() {
-    // console.log('TTR Tracker Started');
+    //console.log('TTR Tracker Started');
     // console.clear();
   });
 
@@ -123,7 +122,7 @@ require([
 
   // CLEAR PLAYERS
   $('#clearPlayers').on('click', function() {
-    // console.log('Clearing all players.');
+    //console.log('Clearing all players.');
     ttrTracker.confirm('Are you sure you want to clear all players?', function(){
       ttrApp.scoresCollection.clearAll();
       ttrApp.playersCollection.clearAll();
@@ -133,7 +132,7 @@ require([
 
   // CLEAR SCORES
   $('#clearScores').on('click', function() {
-    // console.log('Clearing scores');
+    //console.log('Clearing scores');
 
     ttrTracker.confirm('Are you sure you want to clear all scores?', function(){
       ttrApp.scoresCollection.clearAll();
@@ -143,7 +142,7 @@ require([
 
   // REVIEW SCORES
   $('#reviewScores').on('click', function() {
-      // console.log('Review Scores');
+      //console.log('Review Scores');
 
       var temp = '';
       var index = 1;

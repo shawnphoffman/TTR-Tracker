@@ -42,7 +42,7 @@ define([
 
           var sorted = _.sortBy(self.models, function(player){ return player.get('order'); });
           _.each(self.models, function(player) {
-            player.set({'order': ind}, {silent: true}).save();
+            player.set({'order': ind}).save();
             ind++;
           });
         },

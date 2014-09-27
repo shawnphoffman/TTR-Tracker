@@ -18,23 +18,24 @@ function(Backbone, Marionette, Version, template) {
         },
 
         radioToggle: function(e) {
-          // //console.log('Version Toggled: ' + this.model.get('version'));
+          //console.log('Version Toggled: ' + this.model.get('version'));
 
           _.map(ttrApp.versionsCollection.models, function(vers){
             vers.save({'currentVersion': false});
           });
           this.model.save({'currentVersion': true});
           ttrApp.currentVersion = this.model;
-          // _.map(window.ttrPlayers.models, function(player){
-          //   player.SetNumTrains();
-          // });
           ttrApp.scoresCollection.clearAll();
-          // window.ttrVersions.persist();
-          // window.ttrPlayers.updated();
+
+          // ttrApp.playersView.remove();
+          // ttrApp.playersView.render();
+          // $('#player-list').html(ttrApp.playersView.el);
+
+          location.reload();
         },
 
         render: function() {
-          // //console.log('Rendering Version: ' + this.model.get('version'));
+          //console.log('Rendering Version: ' + this.model.get('version'));
 
           var self = this;
           $(this.el).html(template(this.model.toJSON()));

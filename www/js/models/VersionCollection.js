@@ -15,7 +15,7 @@ define([
           });
 
           this.on('add', function (version) {
-            // //console.log('Collection - Version added');
+            //console.log('Collection - Version added');
 
             if (version.get('currentVersion') === true) {
               ttrApp.currentVersion = version;

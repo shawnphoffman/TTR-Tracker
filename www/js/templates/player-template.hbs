@@ -1,7 +1,7 @@
-<div data-color="{{color}}" class="label-checkbox item-content swipeout-content player-data" data-name="<%- {{name}} %>">
+<div data-color="{{color}}" class="label-checkbox item-content player-data" data-name="{{id}}">
   <div style="width: 100%;">
     <div class="player-space">
-      <div class="name-space">{{capitalize name}}</div>
+      <div class="name-space" data-id="{{id}}">{{capitalize name}}</div>
       <div class="score-space">{{score}}</div>
         <div class="trains-space">
           {{#exists trainsLeft }}
@@ -13,7 +13,3 @@
     </div>
   </div>
 </div>
-<div class="swipeout-actions">
-  <div class="swipeout-actions-inner"><a href="#" class="swipeout-delete">Delete</a></div>
-</div>
-<div class="sortable-handler"></div>

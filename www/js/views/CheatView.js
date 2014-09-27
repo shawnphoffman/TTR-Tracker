@@ -9,7 +9,7 @@ function(Backbone, Marionette, Version, template) {
         model: Version,
 
         render: function() {
-          // //console.log('Rendering Cheat: ' + this.model.get('version'));
+          //console.log('Rendering Cheat: ' + this.model.get('version'));
 
           var self = this;
           $(this.el).html(template(this.model.toJSON()));

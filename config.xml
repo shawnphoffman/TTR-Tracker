@@ -36,11 +36,6 @@
   <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
   <preference name="StatusBarBackgroundColor"   value="#000000" />
 
-
-  <gap:plugin name="org.apache.cordova.inappbrowser" />
-  <feature name="InAppBrowser">
-    <param name="ios-package" value="CDVInAppBrowser" />
-  </feature>
   <access origin="*" />
 
 </widget>
