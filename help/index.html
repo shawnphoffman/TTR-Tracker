@@ -1,90 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>TTR Train Tracker - Help</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+	</head>
+	<body>
+<div class="page-container">
 
-<head>
+	<!-- top navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+       <div class="container">
+    	<div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href="#">TTR Train Tracker - Help</a>
+    	</div>
+       </div>
+    </div>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div class="container">
+      <div class="row row-offcanvas row-offcanvas-left">
 
-    <title>TTR Train Tracker - Help</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>
-
-    <div id="wrapper">
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <h3>TTR Train Tracker</h3>
-                <li class="sidebar-brand">
-                    <a href="#help">
-                        Help
-                    </a>
-                </li>
-                <li>
-                    <a href="#players">Players</a>
-                </li>
-                <li>
-                    <a href="#scoring">Scoring</a>
-                </li>
-                <li>
-                    <a href="#routes">Routes</a>
-                </li>
-                <li class="sidebar-brand">
-                    <a href="#contact">Contact</a>
-                </li>
+        <!-- sidebar -->
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+            <h3>Help</h3>
+						<ul class="nav">
+              <li><a href="#players">Players</a></li>
+							<li><a href="#settings">Game Settings</a></li>
+							<li><a href="#management">Game Management</a></li>
+              <li><a href="#trains">Trains</a></li>
+							<li><a href="#fast">Fast Scoring</a></li>
+							<li><a href="#tickets">Tickets &amp; Bonuses</a></li>
+							<li><a href="#cheats">Cheat Sheets</a></li>
             </ul>
         </div>
-        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 id="help">Help</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
+        <!-- main area -->
+        <div class="col-xs-12 col-sm-9">
+          <h1 id="players">Players</h1>
 
-    </div>
-    <!-- /#wrapper -->
+					<h3>Adding Players</h3>
+					<p>
+						To add a player, click the 'Add Player' icon in the top right of the screen. From here, you can choose to enter the name of the player or just touch 'OK' to use a generic 'Player #' name.
+					</p>
 
-    <!-- jQuery Version 1.11.0 -->
-    <script src="js/jquery-1.11.0.js"></script>
+					<h3>Removing Players</h3>
+					<p>
+						To remove a single player from the app, touch the player to trigger the player actions menu. Next, touch 'More Options' followed by 'Remove Player.'
+					</p>
+					<p>
+						To remove all players, touch the 'Settings' icon in the top left corner of the screen. This will open the application management menu. From here touch the 'Clear Players' button.
+					</p>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
+					<h1 id="settings">Game Settings</h1>
+					<p>
+						Game settings allow for you to specify which version of Ticket to Ride you want to play. This selection drives many different features of TTR Train Tracker including:
+						<ul>
+							<li>Trains-Left Tracking</li>
+							<li>Route Length Availability</li>
+							<li>Destination Tickets</li>
+							<li>End-game Bonuses</li>
+						</ul>
+					</p>
 
-</body>
+					<h1 id="management">Game Management</h1>
+					<p>
 
+					</p>
+
+					<h1 id="trains">Trains</h1>
+					<p>
+
+					</p>
+
+					<h1 id="fast">Fast Scoring</h1>
+					<p>
+
+					</p>
+
+					<h1 id="tickets">Tickets &amp; Bonuses</h1>
+					<p>
+
+					</p>
+
+					<h1 id="cheats">Cheat Sheets</h1>
+					<p>
+
+					</p>
+
+        </div><!-- /.col-xs-12 main -->
+    </div><!--/.row-->
+  </div><!--/.container-->
+</div><!--/.page-container-->
+	<!-- script references -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/scripts.js"></script>
+	</body>
 </html>
