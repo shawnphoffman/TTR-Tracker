@@ -1,5 +1,11 @@
 body {
   background: #101010;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .view-main {
   /*background: url(../img/bg.jpg) no-repeat center;*/
@@ -197,8 +203,12 @@ ul.players .item-content {
 }
 
 .warning-item:active {
-  background-color: #FFFFFF;
+  background-color: #777;
   color: #8B0000;
+}
+
+.list-block .item-link:active {
+  background-color: #777;
 }
 
 .panel .item-content {
@@ -206,7 +216,7 @@ ul.players .item-content {
 }
 
 .popup {
-  background: rgba(30, 30, 30, 0.85);
+  background: rgba(30, 30, 30, 0.95);
 }
 
 .popup .navbar {
@@ -220,6 +230,10 @@ ul.players .item-content {
 
 .popup-cheats .navbar {
   background: #DF7B00;
+}
+
+.popup-routes .navbar {
+  background: #2980b9;
 }
 
 .popup a.link {
@@ -356,7 +370,6 @@ label.label-radio input[type=checkbox]:checked~.item-inner, label.label-radio in
 .button.undo-button {
   font-size: 1.4em;
   height: 42px;
-  width: 113px;
   line-height: 2.05em;
   background-color: rgba(0, 0, 0, 0.15);
 }
@@ -446,4 +459,79 @@ li.accordion-item {
 
 .panel .content-block-title {
   margin-top: 20px;
+}
+
+label.label-checkbox input[type=checkbox]:checked+.item-media i.icon-form-checkbox:after {
+  border: none;
+}
+
+.route-incomplete:after {
+   content: url('data:image/svg+xml;utf8,<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g><g stroke="null" id="icomoon-ignore"/><path stroke="null" stroke-width="0" d="m15.91971,1.60903l-1.60903,-1.60903l-6.35083,6.35083l-6.35083,-6.35083l-1.60903,1.60903l6.35083,6.35083l-6.35083,6.35083l1.60903,1.60903l6.35083,-6.35083l6.35083,6.35083l1.60903,-1.60903l-6.35083,-6.35083l6.35083,-6.35083z" fill="#bfbfbf" id="svg_1"/></g></svg>');
+}
+
+.route-complete:after {
+  content: url('data:image/svg+xml;utf8,<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g><g id="icomoon-ignore"/><path id="svg_1" fill="#bfbfbf" d="m5.08761,11.52075l-3.78634,-3.78634l-1.28481,1.28481l5.07115,5.07115l10.89594,-10.89594l-1.28482,-1.28481l-9.61113,9.61113z"/></g></svg>');
+}
+
+/* ROUTES STYLES */
+ul.ttr-routes {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.ttr-routes li {
+    padding: 0.85em 1em;
+    border-bottom: 1px solid black;
+    -webkit-transition: background 0.15s ease;
+    -moz-transition: background 0.15s ease;
+    -ms-transition: background 0.15s ease;
+    -o-transition: background 0.15s ease;
+    transition: background 0.15s ease;
+}
+.nopull {
+    background-color: rgba(85,85,85,0.8);
+}
+.green {
+    background-color: rgba(39,174,96,0.8);
+}
+.red {
+    background-color: rgba(192,57,43,0.8);
+}
+.red span:after {
+  content: url('data:image/svg+xml;utf8,<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g><g stroke="null" id="icomoon-ignore"/><path stroke="null" stroke-width="0" d="m15.91971,1.60903l-1.60903,-1.60903l-6.35083,6.35083l-6.35083,-6.35083l-1.60903,1.60903l6.35083,6.35083l-6.35083,6.35083l1.60903,1.60903l6.35083,-6.35083l6.35083,6.35083l1.60903,-1.60903l-6.35083,-6.35083l6.35083,-6.35083z" fill="#ffffff"/></g></svg>');
+  position:relative;
+  top:3px;
+}
+.green span:after {
+  content: url('data:image/svg+xml;utf8,<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g><g id="icomoon-ignore"/><path id="svg_1" fill="#ffffff" d="m5.08761,11.52075l-3.78634,-3.78634l-1.28481,1.28481l5.07115,5.07115l10.89594,-10.89594l-1.28482,-1.28481l-9.61113,9.61113z"/></g></svg>');
+  position:relative;
+  top:3px;
+}
+.ttr-routes span {
+    float: right;
+}
+.modal {
+  width: 300px;
+  margin-left: -150px;
+}
+span.nobr {
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.7);
+  display: inherit;
+  font-weight: 500;
+}
+span.rtComplete {
+  color: rgba(19, 83, 46, 0.7);
+}
+span.rtIncomplete {
+  color: rgba(220, 0, 0, 0.5);
+}
+.muted {
+  opacity: 0.35;
 }

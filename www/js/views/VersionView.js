@@ -1,5 +1,5 @@
-define(['Backbone', 'Marionette', 'models/Version', 'hbs!templates/version-template'],
-function(Backbone, Marionette, Version, template) {
+define(['Backbone', 'Marionette', 'models/Version', 'hbs!templates/version-template', 'models/RouteCollection', 'views/RouteCollectionView'],
+function(Backbone, Marionette, Version, template, RouteCollection, RouteCollectionView) {
 
     VersionView = Marionette.ItemView.extend( {
         tagName:  "li",

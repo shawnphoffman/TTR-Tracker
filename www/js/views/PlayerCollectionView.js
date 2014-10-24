@@ -23,7 +23,7 @@ define(['Backbone', 'Marionette', 'views/PlayerView'],
       },
 
       addPlayer: function(){
-        //console.log('AddPlayer started', ttrApp.playersView.el);
+        // console.log('AddPlayer started', ttrApp.playersView.el);
 
         var self = this;
 
@@ -42,7 +42,7 @@ define(['Backbone', 'Marionette', 'views/PlayerView'],
           }
           self.collection.create({name: name});
           ttrTracker.closeModal();
-          ttrApp.playersView.render();
+          // ttrApp.playersView.render();
         });
       },
 

@@ -43,14 +43,14 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
       },
 
       removePlayer: function(){
-        //console.log('Removing: ' + this.model.get('name'));
+        // console.log('Removing: ' + this.model.get('name'));
 
         ttrApp.scoresCollection.removePlayerScores(this.model.get('id'));
         if (this.model){
-          this.model.destroy({silent:true});
+          this.model.destroy();
         }
         ttrApp.playersCollection.reSort();
-        ttrApp.playersView.renderDatShit();
+        // ttrApp.playersView.renderDatShit();
 
       },
 
@@ -84,7 +84,7 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
           });
           setTimeout(function(){
             ttrTracker.closeModal();
-          }, 2000);
+          }, 1500);
         });
       },
 
@@ -120,7 +120,7 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
         $('a.color-button').one('click', function(f){
           self.model.set('color', $(this).data('color'));
           self.model.save();
-          self.render();
+          $(self.$el).children('.player-data').attr('data-color', $(this).data('color'));
           ttrTracker.closeModal();
         });
       },
@@ -197,6 +197,13 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
               }},
               {text:'Review Points', onClick:function(){
                 self.reviewPointsByName();
+              }},
+              {text:'Score Routes & Bonuses', onClick:function(){
+                if (ttrApp.currentVersion.get('version') === "Custom"){
+                  ttrTracker.alert('Routes and bonuses are unavailable for the "Custom" game type. Please select a different version and try again.', 'Routes & Bonuses');
+                } else {
+                  self.scoreRoutesBonuses();
+                }
               }},
               {text:'* Fast Scoring *', onClick:function(){
                 self.quickPoints();
@@ -289,14 +296,105 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
         var index = 1;
         _.each(ttrApp.scoresCollection.models, function(score){
           if (score.get('playerID') === self.model.get('id')) {
+
+            // Scores
             var val = score.get('score') > 0 ? '+' + score.get('score') : score.get('score');
             var scoreLabel = Math.abs(score.get('score')) === 1 ? 'point' : 'points';
+
+            // Trains
             var trainLabel = Math.abs(score.get('trains')) === 1 ? 'train' : 'trains';
-            temp += '<b>#' + index++ + '</b>: ' + val + ' ' + scoreLabel +' (' + score.get('trains')+ ' ' + trainLabel + ')<br />';
+
+            // Trains or Routes
+            var tempRouteClass;
+            if (score.get('complete')===true) { tempRouteClass = 'rtComplete'; }
+              else if (score.get('complete')===false) { tempRouteClass = 'rtIncomplete';}
+                else { tempRouteClass = '';}
+            var trainPiece = score.get('route') !== undefined  ? '<span class="nobr '+tempRouteClass+'">('+ score.get('route') +')</span>' : '(' + score.get('trains') + ' ' + trainLabel + ')<br />';
+
+            // Compile
+            temp += '<b>#' + index++ + '</b>: ' + val + ' ' + scoreLabel +' '+ trainPiece;
           }
         });
         if (temp === '') { temp = 'No score history available.'; }
         ttrTracker.alert(temp, 'Score History for ' + self.model.get('name'));
+      },
+
+      scoreRoutesBonuses: function(){
+        // console.info('scoreRoutesBonuses');
+
+        var self = this;
+
+        // ROUTES MODULE
+        var a = _.union(ttrApp.currentVersion.get('routes'),ttrApp.currentVersion.get('bonuses'));
+        var rts = new RouteCollection(a);
+
+        // PROCESS EXISTING ROUTES
+        var exst = _.filter(ttrApp.scoresCollection.models, function(score){
+          return score.get('playerID') === self.model.get('id') && score.get('route') !== undefined;
+        });
+        rts.each(function(rt){
+          var temp = _.filter(exst, function(el){
+            return el.get('route') == rt.get('rt');
+          });
+          if (temp[0]){
+            rt.set({'complete':temp[0].get('complete')});
+          }
+        });
+
+        // POPULATE ROUTE VIEW
+        ttrApp.routesView = new RouteCollectionView({ collection : rts });
+        ttrApp.routesView.render();
+        $('#routes').html(ttrApp.routesView.el);
+
+        $('#close-routes').one('click', function(){
+          self.tallyRoutes();
+          ttrApp.routesView.remove();
+        });
+
+        ttrTracker.popup('.popup-routes');
+      },
+
+      tallyRoutes: function(){
+
+        var self = this;
+
+        var old = _.filter(ttrApp.scoresCollection.models, function(score){
+          return score.get('playerID') === self.model.get('id') && score.get('route') !== undefined;
+        });
+        _.invoke(old, 'destroy');
+
+        var grn = 0;
+        $('.green').each(function(){
+            grn += $(this).data('pt');
+            var score = new Score({
+              'score':parseInt($(this).data('pt'), 10),
+              'trains':0,
+              'date':Date.now(),
+              'player':self.model.get('name'),
+              'playerID':self.model.get('id'),
+              'route': $(this).data('rt'),
+              'complete': true
+            });
+
+            ttrApp.scoresCollection.create(score);
+            self.render();
+        });
+        var red = 0;
+        $('.red').each(function(){
+            red += $(this).data('pt');
+            var score = new Score({
+              'score':parseInt($(this).data('pt'), 10)*-1,
+              'trains':0,
+              'date':Date.now(),
+              'player':self.model.get('name'),
+              'playerID':self.model.get('id'),
+              'route': $(this).data('rt'),
+              'complete': false
+            });
+
+            ttrApp.scoresCollection.create(score);
+            self.render();
+        });
       },
 
       quickPoints: function() {
@@ -383,7 +481,7 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
       },
 
       render: function() {
-        //console.log('Rendering Player: ' + this.model.get('name'));
+        // console.log('Rendering Player: ' + this.model.get('name'));
 
         this.calculateScoreValues();
 

@@ -9,10 +9,15 @@
 
     <title>TTR Tracker</title>
 
-    <!-- <link rel="stylesheet" href="css/dist/framework7.min.css"> -->
-    <!-- <link rel="stylesheet" href="css/ttr.css"> -->
-    <!-- <link rel="stylesheet" href="css/fonts/fonts.css"> -->
-    <link rel="stylesheet" href="css/ttr-final.min.css">
+    <link rel="stylesheet" href="css/dist/framework7.min.css">
+    <link rel="stylesheet" href="css/ttr.css">
+    <link rel="stylesheet" href="css/fonts/fonts.css">
+    <!--<link rel="stylesheet" href="css/ttr-final.min.css">-->
+
+    <!-- CORDOVA SCRIPTS (UNCOMMENT FOR RELEASE) -->
+    <!--<script src="cordova.js"></script>
+    <script src="cordova_plugins.js"></script>-->
+    <!-- END CORDOVA SCRIPTS -->
 
     <!-- Require JS -->
     <script type="text/javascript" data-main="js/req" src="js/require.js"></script>
@@ -96,10 +101,34 @@
             </ul>
         </div>
         <div class="content-block-title">About</div>
+        <div class="list-block">
+            <ul>
+                <li class="panel-li">
+                  <a href="#" id="feedback" class="close-panel item-link">
+                    <div class="item-content">
+                        <div class="item-media"><i class="ttr-icon ttr-contact"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title">Feedback</div>
+                        </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="panel-li">
+                  <a href="#" id="help" class="close-panel item-link">
+                    <div class="item-content">
+                        <div class="item-media"><i class="ttr-icon ttr-question"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title">Help</div>
+                        </div>
+                    </div>
+                  </a>
+                </li>
+            </ul>
+        </div>
         <div class="content-block about-block">
-            <p>This project and source code is available on GitHub <span class="ttr-icon ttr-github"></span>.</p>
-            <p>For any issues or concerns, please visit shawnphoffman.com or github.com/shawnphoffman/ttr-tracker</p>
+            <p>This project is on GitHub <span class="ttr-icon ttr-github"></span>.</p>
             <p>Running slow? Try a <a href="#" id="refresh">refresh</a>.</p>
+            <p class="muted">v-2.1</p>
         </div>
     </div>
 
@@ -175,8 +204,30 @@
                   <div class="list-block accordion-list">
                     <div id="cheats">
                       <!-- CHEATS -->
-                    </ul>
+                    </div>
                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- // Routes & Bonuses Popup -->
+    <div class="popup popup-routes">
+        <div class="view navbar-fixed">
+            <div class="page">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="center">Routes &amp; Bonuses</div>
+                        <div class="right"><a href="#" id="close-routes" class="link close-popup">Done</a></div>
+                    </div>
+                </div>
+                <div class="page-content" id="tracker-routes">
+                    <div class="content-block-title">Routes &amp; Bonuses</div>
+                    <div class="list-block">
+                      <div id="routes">
+                        <!-- ROUTES -->
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>

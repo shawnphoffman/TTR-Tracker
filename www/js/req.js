@@ -76,21 +76,27 @@ require([
 
   // VERSION MODULE
   ttrApp.versionsCollection = new VersionCollection();
-  // if (ex === undefined || (version === undefined || version !== '2.0')) {
-  //     ttrVersions.reset(returnVersions());
-  //     window.localStorage.ttrAppVersion = '2.0';
-  // }
-  ttrApp.versionsCollection.fetch({
-    success: function(data){
-      if (data.length === 0){
-        $.getJSON("js/static/cheats.json", function(json) {
-          _.each(json, function(version){
-            ttrApp.versionsCollection.create(version);
-          });
+  if (window.localStorage.ttrAppVersion === undefined || window.localStorage.ttrAppVersion !== 'v2.1.0') {
+      window.localStorage.clear();
+      $.getJSON("js/static/cheats.json", function(json) {
+        _.each(json, function(version){
+          ttrApp.versionsCollection.create(version);
         });
+      });
+      window.localStorage.ttrAppVersion = 'v2.1.0';
+  } else {
+    ttrApp.versionsCollection.fetch({
+      success: function(data){
+        if (data.length === 0){
+          $.getJSON("js/static/cheats.json", function(json) {
+            _.each(json, function(version){
+              ttrApp.versionsCollection.create(version);
+            });
+          });
+        }
       }
-    }
-  });
+    });
+  }
   ttrApp.versionsView = new VersionCollectionView({ collection : ttrApp.versionsCollection });
   ttrApp.versionsView.render();
   $('#version-list').html(ttrApp.versionsView.el);
@@ -147,13 +153,64 @@ require([
       var temp = '';
       var index = 1;
       _.each(ttrApp.scoresCollection.models, function(score){
+
+        // Scores
         var val = score.get('score') > 0 ? '+' + score.get('score') : score.get('score');
         var scoreLabel = Math.abs(score.get('score')) === 1 ? 'point' : 'points';
+
+        // Trains
         var trainLabel = Math.abs(score.get('trains')) === 1 ? 'train' : 'trains';
-        temp += '<b>#' + index++ + '</b>: ' + val + ' ' + scoreLabel + ' to '+ score.get('player') +' ('+score.get('trains')+' '+trainLabel+')<br />';
+
+        // Trains or Routes
+        var tempRouteClass;
+        if (score.get('complete')===true) { tempRouteClass = 'rtComplete'; }
+          else if (score.get('complete')===false) { tempRouteClass = 'rtIncomplete';}
+            else { tempRouteClass = '';}
+        var trainPiece = score.get('route') !== undefined ? '<span class="nobr '+ tempRouteClass +'">('+ score.get('route') +')</span>' : '(' + score.get('trains') + ' ' + trainLabel + ')<br />';
+
+        // Compile
+        temp += '<b>#' + index++ + '</b>: ' + val + ' ' + scoreLabel + ' to '+ score.get('player') +' '+trainPiece;
       });
       if (temp === '') { temp = 'No score history available.'; }
       ttrTracker.alert(temp, 'Score History');
+  });
+
+  // FEEDBACK IN DA HOUSE
+  $('#feedback').on('click', function(){
+    ttrTracker.modal({
+        title: ttrTracker.params.modalTitle,
+        text: 'Would you like to send an email or visit our GitHub repo?',
+        buttons: [
+        {
+            text:'Email',
+            onClick: function (){
+              window.open('mailto:shawn.p.hoffman@gmail.com?subject=TTR%20Tracker%20Feedback', '_system');
+            },
+            close:true,
+        },
+        {
+            text:'GitHub',
+            onClick: function (){
+              window.open('https://github.com/shawnphoffman/TTR-Tracker', '_system');
+            },
+            close:true,
+        },
+        {
+            text:'Cancel',
+            onClick: function (){
+            },
+            close:true,
+            color: "red"
+        }
+        ],
+        onClick: function(){
+        }
+    });
+  });
+
+  // HELP
+  $('#help').on('click', function() {
+    window.open('http://shawnphoffman.github.io/TTR-Tracker/help/', '_system');
   });
 
   // STUPID REFRESH LINK
