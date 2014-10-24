@@ -30,8 +30,14 @@ define([
         },
 
         clearAll: function() {
-          ttrApp.playersView.destroy();
+          console.log('Collection - Clearing all players');
+
           _.invoke($(this.models).toArray(), 'destroy');
+
+          ttrApp.playersView.$el.empty();
+          ttrApp.playersView.delegateEvents();
+          $('#player-list').append(ttrApp.playersView.render().el);
+
         },
 
         reSort: function(){

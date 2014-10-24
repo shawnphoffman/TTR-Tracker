@@ -76,7 +76,7 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
           ttrApp.scoresCollection.renameScores(self.model.get('id'), name);
           self.model.set({'name': name}, {silent:true}).save();
 
-          $('div[data-id*='+self.model.get('id')+']').text(name);
+          $(self.$el).find('.name-space').text(name);
 
           ttrTracker.modal({
             title: 'Loading...',
@@ -138,11 +138,14 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
           ];
 
           _.each(vers.get('routesAvail'), function(route){
-            var pts = self.mapTrainPoints(route);
+            pts = self.mapTrainPoints(route);
 
-            ar.push({text: route + ' trains (+' + pts.get('score') + ')', onClick:function(){
-              self.applyPoints(pts);
+            ar.push({text: route + ' trains (+' + pts.score + ')', onClick:function(){
+              var pt = self.mapTrainPoints(route);
+              self.applyPoints(pt);
             }});
+
+            pts = undefined;
 
           });
 
@@ -182,12 +185,13 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
                   value = value || 0;
                   if(!isNaN(value))
                   {
-                    var score = new Score({'score':parseInt(value, 10),
-                                           'trains':0,
-                                           'date':Date.now(),
-                                           'player':self.model.get('name'),
-                                           'playerID':self.model.get('id')
-                                          });
+                    var score = {
+                      'score':parseInt(value, 10),
+                      'trains':0,
+                      'date':Date.now(),
+                      'player':self.model.get('name'),
+                      'playerID':self.model.get('id')
+                    };
                     self.applyPoints(score);
                   }
                 }, null, 'number');
@@ -231,9 +235,11 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
           _.each(vers.get('routesAvail'), function(route){
             var pts = self.mapTrainPoints(route);
 
-            ar.push({text: '-' + route + ' trains (-' + pts.get('score') + ')', onClick:function(){
-              pts.set({'trains':pts.get('trains')*-1, 'score':pts.get('score')*-1});
-              self.applyPoints(pts);
+            ar.push({text: '-' + route + ' trains (-' + pts.score + ')', onClick:function(){
+              var pt = self.mapTrainPoints(route);
+              pt.trains *= -1;
+              pt.score *= -1;
+              self.applyPoints(pt);
             }});
 
           });
@@ -242,12 +248,13 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
               value = value || 0;
               if(!isNaN(value))
               {
-                var score = new Score({'score':parseInt(value, 10)*-1,
-                                       'trains':0,
-                                       'date':Date.now(),
-                                       'player':self.model.get('name'),
-                                       'playerID':self.model.get('id')
-                                      });
+                var score = {
+                  'score':parseInt(value, 10)*-1,
+                  'trains':0,
+                  'date':Date.now(),
+                  'player':self.model.get('name'),
+                  'playerID':self.model.get('id')
+                };
                 self.applyPoints(score);
               }
             }, null, 'number');
@@ -260,7 +267,15 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
       applyPoints: function(score){
         //console.log('PlayerView - ApplyPoints');
 
-        ttrApp.scoresCollection.create(score);
+        var scr = new Score({
+          'trains':score.trains,
+          'score':score.score,
+          'date':score.date,
+          'player':score.player,
+          'playerID':score.playerID
+        });
+
+        ttrApp.scoresCollection.create(scr);
 
         this.render();
       },
@@ -268,23 +283,23 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
       mapTrainPoints: function(numTrains){
         switch (numTrains) {
           case 1:
-            return new Score({trains:1, score:1, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')});
+            return {'trains':1, 'score':1, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')};
           case 2:
-            return new Score({trains:2, score:2, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')});
+            return {'trains':2, 'score':2, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')};
           case 3:
-            return new Score({trains:3, score:4, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')});
+            return {'trains':3, 'score':4, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')};
           case 4:
-            return new Score({trains:4, score:7, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')});
+            return {'trains':4, 'score':7, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')};
           case 5:
-            return new Score({trains:5, score:10, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')});
+            return {'trains':5, 'score':10, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')};
           case 6:
-            return new Score({trains:6, score:15, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')});
+            return {'trains':6, 'score':15, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')};
           case 7:
-            return new Score({trains:7, score:18, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')});
+            return {'trains':7, 'score':18, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')};
           case 8:
-            return new Score({trains:8, score:21, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')});
+            return {'trains':8, 'score':21, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')};
           case 9:
-            return new Score({trains:9, score:27, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')});
+            return {'trains':9, 'score':27, 'date':Date.now(), 'player':this.model.get('name'), 'playerID':this.model.get('id')};
         }
       },
 
@@ -377,7 +392,6 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
             });
 
             ttrApp.scoresCollection.create(score);
-            self.render();
         });
         var red = 0;
         $('.red').each(function(){
@@ -393,8 +407,10 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
             });
 
             ttrApp.scoresCollection.create(score);
-            self.render();
         });
+        if (red + grn !== 0) {
+          self.render();
+        }
       },
 
       quickPoints: function() {

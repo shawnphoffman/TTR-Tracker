@@ -24,13 +24,23 @@ define([
       },
 
       clearAll: function() {
-        //console.log("ScoreCollection - clearAll");
+        // console.log("ScoreCollection - clearAll");
 
         _.invoke($(this.models).toArray(), 'destroy');
 
+        ttrApp.playersView.$el.empty();
+        ttrApp.playersView.delegateEvents();
+        $('#player-list').append(ttrApp.playersView.render().el);
+
         // ttrApp.playersView.remove();
-        ttrApp.playersView.render();
-        $('#player-list').html(ttrApp.playersView.el);
+        // ttrApp.playersView.render();
+        // $('#player-list').html(ttrApp.playersView.el);
+      },
+
+      clearAllNoRender: function() {
+        console.log("ScoreCollection - clearAllNoRender");
+
+        _.invoke($(this.models).toArray(), 'destroy');
       },
 
       removePlayerScores: function(id) {
@@ -44,11 +54,11 @@ define([
       },
 
       renameScores: function(id, name) {
-        //console.log("ScoreCollection - renameScores");
+        // console.log("ScoreCollection - renameScores");
 
         _.each(this.models, function(score){
           if (score.get('playerID') === id) {
-            score.set({'player':name}).save();
+            score.set({'player':name}, {silent:true}).save();
           }
         });
       }

@@ -47,6 +47,8 @@ define(['Backbone', 'Marionette', 'views/PlayerView'],
       },
 
       renderDatShit: function(){
+        // console.log('Rendering all Players');
+
         ttrApp.playersView.remove();
         ttrApp.playersView.render();
         $('#player-list').html(ttrApp.playersView.el);

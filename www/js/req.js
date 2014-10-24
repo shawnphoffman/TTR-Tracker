@@ -130,9 +130,9 @@ require([
   $('#clearPlayers').on('click', function() {
     //console.log('Clearing all players.');
     ttrTracker.confirm('Are you sure you want to clear all players?', function(){
-      ttrApp.scoresCollection.clearAll();
+      ttrApp.scoresCollection.clearAllNoRender();
       ttrApp.playersCollection.clearAll();
-      location.reload();
+      // location.reload();
     });
   });
 
@@ -142,7 +142,7 @@ require([
 
     ttrTracker.confirm('Are you sure you want to clear all scores?', function(){
       ttrApp.scoresCollection.clearAll();
-      location.reload();
+      // location.reload();
     });
   });
 
