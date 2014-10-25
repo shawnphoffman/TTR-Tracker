@@ -75,14 +75,14 @@ require([
 
   // VERSION MODULE
   ttrApp.versionsCollection = new VersionCollection();
-  if (window.localStorage.ttrAppVersion === undefined || window.localStorage.ttrAppVersion !== 'v2.1.0') {
+  if (window.localStorage.ttrAppVersion === undefined || window.localStorage.ttrAppVersion !== 'v2.1.1') {
       window.localStorage.clear();
       $.getJSON("js/static/cheats.json", function(json) {
         _.each(json, function(version){
           ttrApp.versionsCollection.create(version);
         });
       });
-      window.localStorage.ttrAppVersion = 'v2.1.0';
+      window.localStorage.ttrAppVersion = 'v2.1.1';
   } else {
     ttrApp.versionsCollection.fetch({
       success: function(data){
