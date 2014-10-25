@@ -7,4 +7,5 @@ before_install:
 install: npm install
 before_script: grunt
 notifications:
-  email: false
+  email:
+    - shawn.p.hoffman+travis@gmail.com
