@@ -1,5 +1,6 @@
 TTR Tracker
 ===========
+[![Build Status](https://travis-ci.org/shawnphoffman/TTR-Tracker.svg?branch=master)](https://travis-ci.org/shawnphoffman/TTR-Tracker)
 
 #### A simple score and train tracking application compatible with all versions of the popular Ticket to Ride board game.
 
@@ -12,7 +13,8 @@ TTR Tracker
 - Able to review & clear scores for the current game.
 - TTR "Cheat Sheets" for all versions. Now you don't need to dig around for rulebooks because you forgot how many trains to start with or what bonuses are available for a particular version.
 - "Fast Scoring" option so that you can quickly add up individual's trains quickly and efficiently.
-
+- Destination Tickets (Routes) & Bonus tickets.
+   + Select what tickets you did and did not complete saving yourself time and performing all calculations within the app!
 Available on the <a href="https://itunes.apple.com/us/app/ttr-tracker/id873105256?ls=1&mt=8" target="_blank">iOS App Store</a>.
 
 ## Details

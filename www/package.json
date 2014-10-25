@@ -19,7 +19,8 @@
     "grunt-contrib-cssmin": "~0.10.0",
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-shell": "~0.7.0",
-    "grunt-remove-logging": "~0.2.0"
+    "grunt-remove-logging": "~0.2.0",
+    "grunt-complexity": "^0.1.7"
   },
   "optionalDependencies": {
     "requirejs": "~2.1.14"
