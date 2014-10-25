@@ -11,8 +11,8 @@ define(['Backbone', 'Marionette', 'views/CheatView'],
       },
 
       getChildView: function(item) {
-        var temp = new CheatView();
-        return temp;
+        // var temp = new CheatView();
+        // return temp;
       },
 
       buildChildView: function(child, ChildViewClass, childViewOptions){

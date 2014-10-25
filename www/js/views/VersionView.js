@@ -18,9 +18,9 @@ function(Backbone, Marionette, Version, template, RouteCollection, RouteCollecti
           });
           this.model.save({'currentVersion': true});
           ttrApp.currentVersion = this.model;
-          ttrApp.scoresCollection.clearAllNoRender();
+          ttrApp.scoresCollection.clearAll();
 
-          location.reload();
+          // location.reload();
 
           // ttrApp.playersView.remove({silent:true});
           // ttrApp.playersView.render();

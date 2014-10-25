@@ -12,12 +12,6 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
         'click .player-data' : 'toggleActions'
       },
 
-      initialize: function() {
-        if (this.model.attributes) {
-          // this.listenTo(this.model, 'update', this.render);
-        }
-      },
-
       toggleActions: function() {
         //console.log('Toggling: ' + this.model.get('name'));
 
@@ -50,8 +44,6 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
           this.model.destroy();
         }
         ttrApp.playersCollection.reSort();
-        // ttrApp.playersView.renderDatShit();
-
       },
 
       editPlayerName: function(){
@@ -490,14 +482,11 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
 
         this.model.set({'trainsLeft':trains, 'score':score}, {silent:true});
 
-        //console.log('calculateScoreValues - score', score);
-        //console.log('calculateScoreValues - trains', trains);
-
         this.model.set({'trainsLeft':trains, 'score':score}, {silent:true});
       },
 
       render: function() {
-        // console.log('Rendering Player: ' + this.model.get('name'));
+        console.log('Rendering Player: ' + this.model.get('name'));
 
         this.calculateScoreValues();
 

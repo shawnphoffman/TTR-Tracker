@@ -12,8 +12,8 @@ define(['Backbone', 'Marionette', 'views/PlayerView'],
       },
 
       getChildView: function(item) {
-        var temp = new PlayerView();
-        return temp;
+        // var temp = new PlayerView();
+        // return temp;
       },
 
       buildChildView: function(child, ChildViewClass, childViewOptions){

@@ -11,8 +11,8 @@ define(['Backbone', 'Marionette', 'views/VersionView'],
       },
 
       getChildView: function(item) {
-        var temp = new VersionView();
-        return temp;
+        // var temp = new VersionView();
+        // return temp;
       },
 
       buildChildView: function(child, ChildViewClass, childViewOptions){

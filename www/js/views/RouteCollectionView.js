@@ -10,8 +10,8 @@ define(['Backbone', 'Marionette', 'views/RouteView'],
       },
 
       getChildView: function(item) {
-        var temp = new RouteView();
-        return temp;
+        // var temp = new RouteView();
+        // return temp;
       },
 
       buildChildView: function(child, ChildViewClass, childViewOptions){

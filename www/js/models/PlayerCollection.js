@@ -16,21 +16,21 @@ define([
 
         initialize: function() {
           this.on('add', function (player) {
-            //console.log('Collection - Player added');
+            // console.log('Collection - Player added', player);
 
             var self = this;
             if (player.get('order') === 0){
               var withOrder = _.filter(self.models, function(plyr){
                 return plyr.get('order') !== 0;
               });
-              player.set({'order':withOrder.length+1});
+              player.set({'order':withOrder.length+1}, {silent:true});
             }
             self.sort({silent:true});
           });
         },
 
         clearAll: function() {
-          console.log('Collection - Clearing all players');
+          // console.log('Collection - Clearing all players');
 
           _.invoke($(this.models).toArray(), 'destroy');
 
