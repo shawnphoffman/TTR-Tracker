@@ -355,7 +355,7 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
 
         $('#close-routes').one('click', function(){
           self.tallyRoutes();
-          ttrApp.routesView.remove();
+          ttrApp.routesView.destroy();
         });
 
         ttrTracker.popup('.popup-routes');

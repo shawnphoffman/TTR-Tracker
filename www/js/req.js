@@ -64,7 +64,6 @@ require([
   ttrApp = new Backbone.Marionette.Application();
   ttrApp.on('start', function() {
     //console.log('TTR Tracker Started');
-    // console.clear();
   });
 
   // HELPER MIXIN
@@ -97,9 +96,6 @@ require([
       }
     });
   }
-  ttrApp.versionsView = new VersionCollectionView({ collection : ttrApp.versionsCollection });
-  ttrApp.versionsView.render();
-  $('#version-list').html(ttrApp.versionsView.el);
 
   // SCORES MODULE
   ttrApp.scoresCollection = new ScoreCollection();
@@ -115,12 +111,33 @@ require([
     }
   });
 
-  // CHEAT MODULE
-  ttrApp.cheatsView = new CheatCollectionView({ collection : ttrApp.versionsCollection });
-  ttrApp.cheatsView.render();
-  $('#cheats').html(ttrApp.cheatsView.el);
-
   // == MENU HANDLERS ==
+  // GAME SETTINGS
+  $('#generalSettings').on('click', function() {
+
+    ttrApp.versionsView = new VersionCollectionView({ collection : ttrApp.versionsCollection });
+    ttrApp.versionsView.render();
+    $('#version-list').html(ttrApp.versionsView.el);
+
+    ttrTracker.popup('.popup-settings');
+  });
+  $$('.popup-settings').on('closed', function(){
+    ttrApp.versionsView.destroy();
+  });
+
+  // CHEAT SHEETS
+  $('#cheatSheets').on('click', function() {
+
+    ttrApp.cheatsView = new CheatCollectionView({ collection : ttrApp.versionsCollection });
+    ttrApp.cheatsView.render();
+    $('#cheats').html(ttrApp.cheatsView.el);
+
+    ttrTracker.popup('.popup-cheats');
+  });
+  $$('.popup-cheats').on('closed', function(){
+    ttrApp.cheatsView.destroy();
+  });
+
   // ADD PLAYER
   $('#addPlayerIcon').on('click', function(){
     ttrApp.playersView.addPlayer();
@@ -132,7 +149,6 @@ require([
     ttrTracker.confirm('Are you sure you want to clear all players?', function(){
       ttrApp.scoresCollection.clearAllNoRender();
       ttrApp.playersCollection.clearAll();
-      // location.reload();
     });
   });
 
@@ -142,7 +158,6 @@ require([
 
     ttrTracker.confirm('Are you sure you want to clear all scores?', function(){
       ttrApp.scoresCollection.clearAll();
-      // location.reload();
     });
   });
 
