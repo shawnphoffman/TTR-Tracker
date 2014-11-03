@@ -1448,9 +1448,8 @@
   },
   {
     "version":"Deutschland",
-    "isBase": false,
+    "isBase": true,
     "numTrains": 45,
-    "mapCollection": "Exclusive",
     "minPlayer": 2,
     "maxPlayer": 5,
     "startDestTicks": 4,
@@ -1464,6 +1463,13 @@
     "gameEnd": 2,
     "doubleActive": 4,
     "routesAvail": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
     ],
     "notes": [
       "Separate long and short route decks"

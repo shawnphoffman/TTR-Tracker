@@ -400,9 +400,7 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
 
             ttrApp.scoresCollection.create(score);
         });
-        if (red + grn !== 0) {
-          self.render();
-        }
+        self.render();
       },
 
       quickPoints: function() {
@@ -486,7 +484,7 @@ define(['Backbone', 'Marionette', 'models/Player', 'hbs!templates/player-templat
       },
 
       render: function() {
-        console.log('Rendering Player: ' + this.model.get('name'));
+        // console.log('Rendering Player: ' + this.model.get('name'));
 
         this.calculateScoreValues();
 
