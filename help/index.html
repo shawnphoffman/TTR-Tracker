@@ -1,163 +1,203 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>TTR Train Tracker</title>
+  <title>TTR Train Tracker</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/styles.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
 
-  <body>
+<body>
 
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">TTR Train Tracker</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-
-            <li class="dropdown hidden-xs">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help Topics <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li class="dropdown-header">Basics</li>
-                <li><a href="#players">Players</a></li>
-                <li><a href="#settings">Game Settings</a></li>
-                <li><a href="#management">Game Management</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Scoring</li>
-                <li><a href="#trains">Trains</a></li>
-                <li><a href="#fast">Fast Scoring</a></li>
-                <li><a href="#tickets">Tickets &amp; Bonuses</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Extras</li>
-                <li><a href="#cheats">Cheat Sheets</a></li>
-              </ul>
-            </li>
-
-            <li><a class="visible-xs" href="#players">Players</a></li>
-            <li><a class="visible-xs" href="#settings">Game Settings</a></li>
-            <li><a class="visible-xs" href="#management">Game Management</a></li>
-            <li><a class="visible-xs" href="#trains">Trains</a></li>
-            <li><a class="visible-xs" href="#fast">Fast Scoring</a></li>
-            <li><a class="visible-xs" href="#tickets">Tickets &amp; Bonuses</a></li>
-            <li><a class="visible-xs" href="#cheats">Cheat Sheets</a></li>
-
-          </ul>
-        </div><!--/.nav-collapse -->
+  <!-- Fixed navbar -->
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">TTR Train Tracker</a>
       </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+
+          <li class="dropdown hidden-xs">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help Topics <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="dropdown-header">Basics</li>
+              <li><a href="#players">Players</a></li>
+              <li><a href="#settings">Game Settings</a></li>
+              <li><a href="#management">Game Management</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Scoring</li>
+              <li><a href="#trains">Trains</a></li>
+              <li><a href="#fast">Fast Scoring</a></li>
+              <li><a href="#tickets">Tickets &amp; Bonuses</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Extras</li>
+              <li><a href="#cheats">Cheat Sheets</a></li>
+            </ul>
+          </li>
+
+          <li><a class="visible-xs" href="#players">Players</a></li>
+          <li><a class="visible-xs" href="#settings">Game Settings</a></li>
+          <li><a class="visible-xs" href="#management">Game Management</a></li>
+          <li><a class="visible-xs" href="#trains">Trains</a></li>
+          <li><a class="visible-xs" href="#fast">Fast Scoring</a></li>
+          <li><a class="visible-xs" href="#tickets">Tickets &amp; Bonuses</a></li>
+          <li><a class="visible-xs" href="#cheats">Cheat Sheets</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- JUMBOTRON -->
+    <div class="jumbotron">
+      <h1>TTR Train Tracker Help Site</h1>
+      <p>Welcome! Thank you for checking out my app. Obviously you are here because you have questions about the functionality and I'm hear to provide answers. If there is anything else you need, feel free to contact me.</p>
     </div>
 
-    <div class="container">
+    <div class="row">
 
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>TTR Train Tracker Help Site</h1>
-        <p>Welcome! Thank you for checking out my app. Obviously you are here because you have questions about the functionality and I'm hear to provide answers. If there is anything else you need, feel free to contact me.</p>
-      </div>
+      <div class="col-xs-12">
+        <!-- PLAYERS -->
+        <h1 id="players" class="text-primary">Players</h1>
 
-      <div class="row">
+        <h3>Adding Players</h3>
+        <p>
+          To add a player, click the 'Add Player' icon in the top right of the screen. From here, you can choose to enter the name of the player or just touch 'OK' to use a generic 'Player #' name.
+          <img src="img/AddPlayer-min.gif" alt="" />
+        </p>
 
-        <!-- main area -->
-        <div class="col-xs-12">
-          <h1 id="players">Players</h1>
+        <h3>Removing Players</h3>
+        <p>
+          To remove a single player from the app, touch the player to trigger the player actions menu. Next, touch 'More Options' followed by 'Remove Player.'
+          <img src="img/RemovePlayer-min.gif" alt="" />
+        </p>
+        <p>
+          To remove all players, touch the 'Settings' icon in the top left corner of the screen. This will open the application management menu. From here touch the 'Clear Players' button.
+          <img src="img/RemoveAllPlayers-min.gif" alt="" />
+        </p>
 
-          <h3>Adding Players</h3>
-          <p>
-            To add a player, click the 'Add Player' icon in the top right of the screen. From here, you can choose to enter the name of the player or just touch 'OK' to use a generic 'Player #' name. <img src="img/AddPlayer-min.gif" alt="" />
-          </p>
+        <h3>Changing a Player's Name</h3>
+        <p>
+          To change a player's name, touch the player and then select 'More Options...' followed by 'Edit Name'. You will be presented with a popup box allowing you to type in a new name for your player. If you do not type a name into the box, a placeholder name will be selected for you.
+          <img src="img/EditName-min.gif" alt="" />
+        </p>
 
-          <h3>Removing Players</h3>
-          <p>
-            To remove a single player from the app, touch the player to trigger the player actions menu. Next, touch 'More Options' followed by 'Remove Player.'
-             <img src="img/RemovePlayer-min.gif" alt="" />
-          </p>
-          <p>
-            To remove all players, touch the 'Settings' icon in the top left corner of the screen. This will open the application management menu. From here touch the 'Clear Players' button. <img src="img/RemoveAllPlayers-min.gif" alt="" />
-          </p>
+        <h3>Changing a Player's Color</h3>
+        <p>
+          To change a player's color, touch the player and then select 'More Options...' followed by 'Change Color'. You will be presented with a popup box allowing you to select a new color for your player.
+          <img src="img/ChangeColor-min.gif" alt="" />
+        </p>
 
-          <h3>Changing a Players Name</h3>
-          <p>
-            <img src="img/EditName-min.gif" alt="" />
-          </p>
+        <!-- GAME SETTINGS -->
+        <h1 id="settings" class="text-primary">Game Settings</h1>
+        <p>
+          Game settings allow for you to specify which version of Ticket to Ride you want to play. This selection drives many different features of TTR Train Tracker including:
+          <ul>
+            <li>Trains-Left Tracking</li>
+            <li>Route Length Availability</li>
+            <li>Destination Tickets</li>
+            <li>End-game Bonuses</li>
+          </ul>
+        </p>
+        <p>
+          To change your current game settings, click the 'Settings' icon in the top left of the screen. This will open the settings panel allowing you to next click the 'Game Settings' option. From here, you can scroll to find the version of Ticket to Ride that you want to play. Simply tap the game version to select it and click 'Done' when you are finished. <mark>Keep in mind, selecting a different version will reset all current scores.</mark>
+        </p>
+        <p>
+          Now that you have selected a new version to play with, the associated changes are now effective in the available route lengths as well as the destination tickets &amp; bonuses.
+        </p>
 
-          <h3>Changing a Players Color</h3>
-          <p>
-            <img src="img/ChangeColor-min.gif" alt="" />
-          </p>
+        <!-- GAME MANAGEMENT -->
+        <h1 id="management" class="text-primary">Game Management</h1>
+        <img src="img/GameManagement.png" />
+        <h3>Review Scores</h3>
+        <p>
+          This option displays a popup message reviewing all of the current recorded points and the players associated.
+        </p>
+        <h3>Clear Scores</h3>
+        <p>
+          This will clear all scores for all players in the game.
+        </p>
+        <h3>Clear Players</h3>
+        <p>
+          This will clear all players from the application.
+        </p>
 
-          <h1 id="settings">Game Settings</h1>
-          <p>
-            Game settings allow for you to specify which version of Ticket to Ride you want to play. This selection drives many different features of TTR Train Tracker including:
-            <ul>
-              <li>Trains-Left Tracking</li>
-              <li>Route Length Availability</li>
-              <li>Destination Tickets</li>
-              <li>End-game Bonuses</li>
-            </ul>
-            <i>Coming soon...</i>
-          </p>
+        <!-- TRAINS -->
+        <h1 id="trains" class="text-primary">Trains</h1>
 
-          <h1 id="management">Game Management</h1>
-          <p>
+        <h3>Available Routes</h3>
+        <p>
+          When you select a user, you will be presented with a list of available routes. These routes are specific to the version of Ticket to Ride you have selected in the <a href="#settings">Game Settings</a> menu. If you would like to use a generic list of routes, select the <em>Custom</em> version in Game Settings.
+        </p>
 
-<i>Coming soon...</i>
-          </p>
+        <h3>Adding a Route of Trains</h3>
+        <p>
+          When someone plays a route of trains in the game, simply tap their name and select the appropriate route length to apply it to their score. <mark>Route lengths &amp; associated points awarded have been documented for all versions of TTR. If you find a discrepancy please reach out and let us know.</mark>
+        </p>
 
-          <h1 id="trains">Trains</h1>
-          <p>
+        <!-- FAST SCORING -->
+        <h1 id="fast" class="text-primary">Fast Scoring</h1>
+        <p>
+          <strong>Fast Scoring</strong> is a feature unique to TTR Train Tracker. This feature allows you to quickly add up a player's routes without having to continuously reopen the available routes action. This is especially usefull for players who like to add up their routes at the end of the game instead of trying to keep track of them throughout the game.
+        </p>
+        <p>
+          If you want to take advantage of <strong>Fast Scoring</strong>, simply select the user you want to calculate and select 'More Options'. From this action list click the 'Fast Scoring' link and you will be presented with a popup message allowing you to click the various route lengths. <mark>Keep in mind that Fast Scoring never utilizes routes specific to the current TTR version. It will always display route lengths from 1-9.</mark>
+        </p>
 
-<i>Coming soon...</i>
-          </p>
+        <!-- TICKETS & BONUSES -->
+        <h1 id="tickets" class="text-primary">Tickets &amp; Bonuses</h1>
+        <p>
+          Tickets &amp; bonuses allow you to calculate all of the player's destination tickets at the end of the game. The tickets and bonuses available are dependent on the current TTR version selected in the <a href="#setting">Game Settings</a> menu. The list of destination tickets and bonuses has been painstakingly compiled but if you notice any errors, <strong>PLEASE</strong> contact us and let us know.
+        </p>
+        <p>
+          To calculate a user's completed tickets, simply click the appropriate user then select the 'More Options' link. From here, select 'Score Routes &amp; Bonuses' to be presented a length list of available routes and bonuses. The items in this list act as a 3-way switch, allowing you to specify the following states of completion:
+          <img src="img/RoutesBonuses.png" />
+          <ul>
+            <li><strong>Completed</strong> - Green background with a white checkmark</li>
+            <li><strong>Incomplete</strong> - Red background with a white 'X'</li>
+            <li><strong>Not in Hand</strong> - Grey background (Default)</li>
+          </ul>
+        </p>
 
-          <h1 id="fast">Fast Scoring</h1>
-          <p>
-          <i>Coming soon...</i>
+        <!-- CHEAT SHEETS -->
+        <h1 id="cheats" class="text-primary">Cheat Sheets</h1>
+        <p>
+          <em>Coming soon...</em>
+        </p>
 
-          </p>
+      </div><!-- /.col-xs-12 main -->
 
-          <h1 id="tickets">Tickets &amp; Bonuses</h1>
-          <p>
-          <i>Coming soon...</i>
+    </div><!--/.row-->
 
-          </p>
-
-          <h1 id="cheats">Cheat Sheets</h1>
-          <p>
-
-<i>Coming soon...</i>
-          </p>
-
-        </div><!-- /.col-xs-12 main -->
-      </div><!--/.row-->
-
-    </div> <!-- /container -->
+  </div> <!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 
 
 </body></html>
