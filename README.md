@@ -21,4 +21,3 @@ Available on the <a href="https://itunes.apple.com/us/app/ttr-tracker/id87310525
 
 Using PhoneGap, the following codebase can be built for multiple platforms including iOS and Android. To date, only iOS has been built.
 
-## To Do (Now on Trello)
